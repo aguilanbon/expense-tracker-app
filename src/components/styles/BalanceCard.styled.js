@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const StyledCard = styled.div`
     width: 35rem;
     height: 10rem;
-    /* background-color: blue; */
     box-shadow: 0 0 5px #C4B6B6;
     border-radius: .5rem;
     display: flex;
@@ -21,6 +20,7 @@ export const TransactionTypeText = styled.h3`
     width: 100%;
     font-size: 1.5rem;
     padding: 1rem;
+    letter-spacing: .2rem;
 `
 export const TransactionAmount = styled.p`
     color: ${({color}) => color};

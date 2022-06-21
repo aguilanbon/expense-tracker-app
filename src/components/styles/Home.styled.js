@@ -21,10 +21,12 @@ export const RightColumn = styled.div`
 `
 
 export const TextH3 = styled.h3`
-    font-size: 2rem;
+    font-size: 1.5rem;
 `
 
 export const TextH2 = styled.h2`
+    font-size: 2rem;
+`
+export const TextH1 = styled.h1`
     font-size: 3rem;
-    pad: 1rem;
 `

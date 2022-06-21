@@ -1,13 +1,13 @@
 import React from 'react'
 import BalanceCard from '../components/BalanceCard'
-import { HomeContainer, LeftColumn, RightColumn, TextH2, TextH3 } from '../components/styles/HomeContainer.styled'
+import { HomeContainer, LeftColumn, RightColumn, TextH2, TextH1 } from '../components/styles/Home.styled'
 
 function Home() {
     return (
         <HomeContainer>
             <LeftColumn>
-                <TextH3>Your Balance</TextH3>
-                <TextH2>$3400.00</TextH2>
+                <TextH2>Your Balance</TextH2>
+                <TextH1>$3400.00</TextH1>
                 <BalanceCard />
             </LeftColumn>
             <RightColumn></RightColumn>
