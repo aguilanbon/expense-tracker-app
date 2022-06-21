@@ -7,9 +7,9 @@ function InputComponent() {
             <SignInText>Log In to your Account</SignInText>
             <InputDiv>
                 <InputLabel>Email</InputLabel>
-                <Input type='text'></Input>
+                <Input type='text' placeholder='Your Email here...'></Input>
                 <InputLabel>Password</InputLabel>
-                <Input type='password'></Input>
+                <Input type='password' placeholder='Your password here...'></Input>
                 <StyledButton>Log in</StyledButton>
             </InputDiv>
         </RightCol>
