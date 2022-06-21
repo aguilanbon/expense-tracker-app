@@ -1,9 +1,14 @@
 import React from 'react'
+import Hero from '../components/Hero'
+import InputComponent from '../components/InputComponent'
+import { LoginContainer } from '../components/styles/LoginContainer.styled'
 
 function Login() {
     return (
-        <div>
-        </div>
+        <LoginContainer>
+            <Hero />
+            <InputComponent />
+        </LoginContainer>
     )
 }
 
