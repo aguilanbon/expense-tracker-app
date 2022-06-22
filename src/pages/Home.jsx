@@ -2,6 +2,7 @@ import React from 'react'
 import BalanceCard from '../components/BalanceCard'
 import History from '../components/History'
 import { HomeContainer, LeftColumn, RightColumn, TextH2, TextH1 } from '../components/styles/Home.styled'
+import Transactions from '../components/Transactions'
 
 function Home() {
     return (
@@ -12,7 +13,11 @@ function Home() {
                 <BalanceCard />
                 <History />
             </LeftColumn>
-            <RightColumn></RightColumn>
+            <RightColumn>
+                <Transactions>
+
+                </Transactions>
+            </RightColumn>
         </HomeContainer>
     )
 }

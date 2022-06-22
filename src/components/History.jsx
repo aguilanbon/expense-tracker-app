@@ -5,15 +5,15 @@ function History() {
     return (
         <HistoryContainer>
             <HistoryH1>History</HistoryH1>
-            <HistoryCardContainer color='#F05454'>
+            <HistoryCardContainer color='#d9534f'>
                 <TextTransaction>Books</TextTransaction>
                 <TextAmount>$500.00</TextAmount>
             </HistoryCardContainer>
-            <HistoryCardContainer color='#519872'>
+            <HistoryCardContainer color='#5cb85c'>
                 <TextTransaction>Salary</TextTransaction>
                 <TextAmount>$1000.00</TextAmount>
             </HistoryCardContainer>
-            <HistoryCardContainer color='#519872'>
+            <HistoryCardContainer color='#5cb85c'>
                 <TextTransaction>Freelance Project</TextTransaction>
                 <TextAmount>$750.00</TextAmount>
             </HistoryCardContainer>

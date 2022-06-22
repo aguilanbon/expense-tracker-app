@@ -7,23 +7,21 @@ export const HomeContainer = styled.div`
     margin: 0 auto;
     padding: 4em;
 `
-
 export const LeftColumn = styled.div`
     display: flex;
     flex-direction: column;
     width: 50%;
 `
-
 export const RightColumn = styled.div`
     display: flex;
     flex-direction: column;
     width: 50%;
+    padding: 0 3rem;
 `
 
 export const TextH3 = styled.h3`
     font-size: 1.5rem;
 `
-
 export const TextH2 = styled.h2`
     font-size: 2rem;
 `

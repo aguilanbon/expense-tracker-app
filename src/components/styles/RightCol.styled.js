@@ -7,7 +7,7 @@ export const RightCol = styled.div`
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    padding: 4rem;
+    padding: 0 4rem;
 `
 
 export const SignInText = styled.h2`

@@ -8,6 +8,7 @@ const GlobalStyles = createGlobalStyle`
         padding: 0;
         font-family: 'Prompt', sans-serif;
         font-size: 10px;
+        color: #292b2c;
     }
     * {
         box-sizing: border-box;

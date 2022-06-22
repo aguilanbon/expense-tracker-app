@@ -6,11 +6,11 @@ function BalanceCard() {
         <StyledCard>
             <TransactionContainer>
                 <TransactionTypeText>INCOME</TransactionTypeText>
-                <TransactionAmount color='#519872'>$1,500.00</TransactionAmount>
+                <TransactionAmount color='#5cb85c'>$1,500.00</TransactionAmount>
             </TransactionContainer>
             <TransactionContainer>
                 <TransactionTypeText>EXPENSES</TransactionTypeText>
-                <TransactionAmount color='#F05454'>$500.00</TransactionAmount>
+                <TransactionAmount color='#d9534f'>$500.00</TransactionAmount>
             </TransactionContainer>
         </StyledCard>
     )
