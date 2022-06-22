@@ -8,18 +8,18 @@ function Transactions() {
 
     const { setTotalIncome, setBalance, setTotalExpenses, setTransactionDetails } = useContext(ExpenseContext)
 
-    const [transactionAmount, setTransactionAmount] = useState(0)
+    const [transactionAmount, setTransactionAmount] = useState('')
 
     const addIncome = () => {
         setTotalIncome(prevAmount => prevAmount + parseFloat(transactionAmount))
         setBalance(prevAmount => prevAmount + parseFloat(transactionAmount))
-        setTransactionAmount(0)
+        setTransactionAmount('')
     }
 
     const addExpense = () => {
         setTotalExpenses(prevAmount => prevAmount + parseFloat(transactionAmount))
         setBalance(prevAmount => prevAmount - parseFloat(transactionAmount))
-        setTransactionAmount(0)
+        setTransactionAmount('')
     }
 
     return (
@@ -28,7 +28,7 @@ function Transactions() {
             <TransactionLabel>Details</TransactionLabel>
             <TransactionInput type='text' placeholder='Enter transaction details'></TransactionInput>
             <TransactionLabel>Amount</TransactionLabel>
-            <TransactionInput step='any' type='number' placeholder='Enter transaction amount' value={transactionAmount} onChange={e => setTransactionAmount(e.target.value)}></TransactionInput>
+            <TransactionInput type='text' placeholder='Enter transaction amount' value={transactionAmount} onChange={e => setTransactionAmount(e.target.value)}></TransactionInput>
             <ButtonContainer>
                 <TransactionButton bg='#5cb85c' color='white' onClick={() => addIncome()}>Income</TransactionButton>
                 <TransactionButton bg='#d9534f' color='white' onClick={() => addExpense()} >Expense</TransactionButton>
