@@ -1,19 +1,25 @@
 import React, { useState } from 'react'
+import { useContext } from 'react'
+import ExpenseContext from '../helpers/ExpenseTrackerContext'
 import { HistoryH1 } from './styles/History.styled'
 import { ButtonContainer, TransactionButton, TransactionContainer, TransactionInput, TransactionLabel } from './styles/Transaction.styled'
 
-function Transactions({ setTotalIncome, setBalance, setTotalExpenses }) {
+function Transactions() {
+
+    const { setTotalIncome, setBalance, setTotalExpenses, setTransactionDetails } = useContext(ExpenseContext)
 
     const [transactionAmount, setTransactionAmount] = useState(0)
 
     const addIncome = () => {
-        setTotalIncome(prevAmount => prevAmount + transactionAmount)
-        setBalance(prevAmount => prevAmount + transactionAmount)
+        setTotalIncome(prevAmount => prevAmount + parseFloat(transactionAmount))
+        setBalance(prevAmount => prevAmount + parseFloat(transactionAmount))
+        setTransactionAmount(0)
     }
 
     const addExpense = () => {
-        setTotalExpenses(prevAmount => prevAmount + transactionAmount)
-        setBalance(prevAmount => prevAmount - transactionAmount)
+        setTotalExpenses(prevAmount => prevAmount + parseFloat(transactionAmount))
+        setBalance(prevAmount => prevAmount - parseFloat(transactionAmount))
+        setTransactionAmount(0)
     }
 
     return (
@@ -22,7 +28,7 @@ function Transactions({ setTotalIncome, setBalance, setTotalExpenses }) {
             <TransactionLabel>Details</TransactionLabel>
             <TransactionInput type='text' placeholder='Enter transaction details'></TransactionInput>
             <TransactionLabel>Amount</TransactionLabel>
-            <TransactionInput type='text' placeholder='Enter transaction amount' onChange={e => setTransactionAmount(parseInt(e.target.value))}></TransactionInput>
+            <TransactionInput step='any' type='number' placeholder='Enter transaction amount' value={transactionAmount} onChange={e => setTransactionAmount(e.target.value)}></TransactionInput>
             <ButtonContainer>
                 <TransactionButton bg='#5cb85c' color='white' onClick={() => addIncome()}>Income</TransactionButton>
                 <TransactionButton bg='#d9534f' color='white' onClick={() => addExpense()} >Expense</TransactionButton>
