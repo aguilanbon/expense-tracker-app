@@ -6,7 +6,7 @@ import { ButtonContainer, TransactionButton, TransactionContainer, TransactionIn
 
 function Transactions() {
 
-    const { setTotalIncome, setBalance, setTotalExpenses, setTransactionDetails, transactionDetails, transaction, setTransaction } = useContext(ExpenseContext)
+    const { setTotalIncome, setBalance, setTotalExpenses, setTransactionDetails, transactionDetails, setTransaction } = useContext(ExpenseContext)
 
     const [transactionAmount, setTransactionAmount] = useState('')
 

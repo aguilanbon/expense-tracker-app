@@ -10,11 +10,11 @@ function BalanceCard() {
         <StyledCard>
             <TransactionContainer>
                 <TransactionTypeText>INCOME</TransactionTypeText>
-                <TransactionAmount color='#5cb85c'>{totalIncome.toFixed(2)}</TransactionAmount>
+                <TransactionAmount color='#5cb85c'>${totalIncome.toFixed(2)}</TransactionAmount>
             </TransactionContainer>
             <TransactionContainer>
                 <TransactionTypeText>EXPENSES</TransactionTypeText>
-                <TransactionAmount color='#d9534f'>{totalExpenses.toFixed(2)}</TransactionAmount>
+                <TransactionAmount color='#d9534f'>${totalExpenses.toFixed(2)}</TransactionAmount>
             </TransactionContainer>
         </StyledCard>
     )

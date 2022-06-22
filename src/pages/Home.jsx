@@ -8,13 +8,13 @@ import ExpenseContext from '../helpers/ExpenseTrackerContext'
 
 function Home() {
 
-    const { balance, setBalance, totalIncome, setTotalIncome, totalExpenses, setTotalExpenses, setTransactionDetails, transactionDetails } = useContext(ExpenseContext)
+    const { balance } = useContext(ExpenseContext)
 
     return (
         <HomeContainer>
             <LeftColumn>
                 <TextH2>Your Balance</TextH2>
-                <TextH1>{parseFloat(balance).toFixed(2)}</TextH1>
+                <TextH1>${parseFloat(balance).toFixed(2)}</TextH1>
                 <BalanceCard />
                 <History />
             </LeftColumn>
