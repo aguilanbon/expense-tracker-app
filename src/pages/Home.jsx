@@ -5,10 +5,13 @@ import History from '../components/History'
 import { HomeContainer, LeftColumn, RightColumn, TextH2, TextH1 } from '../components/styles/Home.styled'
 import Transactions from '../components/Transactions'
 import ExpenseContext from '../helpers/ExpenseTrackerContext'
+import { auth } from '../helpers/FirebaseConfig'
 
 function Home() {
 
     const { balance } = useContext(ExpenseContext)
+
+    console.log(auth.currentUser);
 
     return (
         <HomeContainer>

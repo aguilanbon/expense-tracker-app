@@ -9,13 +9,15 @@ export const ExpenseProvider = ({children}) => {
     const [totalExpenses, setTotalExpenses] = useState(0)
     const [transaction, setTransaction] = useState({})
     const [transactionDetails, setTransactionDetails] = useState('')
+    const [isAuth, setIsAuth] = useState(false)
 
     const value = {
         balance, setBalance,
         totalIncome, setTotalIncome,
         totalExpenses, setTotalExpenses,
         transactionDetails, setTransactionDetails,
-        transaction, setTransaction
+        transaction, setTransaction,
+        isAuth, setIsAuth
     }
 
     return (
