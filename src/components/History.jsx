@@ -1,5 +1,4 @@
 import React, { useContext } from 'react'
-import { useState } from 'react'
 import ExpenseContext from '../helpers/ExpenseTrackerContext'
 import { HistoryCardContainer, HistoryContainer, HistoryH1, TextAmount, TextTransaction } from './styles/History.styled'
 
