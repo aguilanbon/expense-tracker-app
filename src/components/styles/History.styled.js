@@ -23,9 +23,9 @@ export const HistoryCardContainer = styled.div`
     border-right: .4rem solid ${({color}) => color};
 `
 export const TextTransaction = styled.p`
-
+    font-size: .8rem;
 `
 
 export const TextAmount = styled.p`
-    
+    font-size: .8rem;
 `

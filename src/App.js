@@ -3,6 +3,7 @@ import Login from './pages/Login';
 import GlobalStyles from './components/styles/Global.styled'
 import Signup from './pages/Signup';
 import Home from './pages/Home';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path='/signup' element={<Signup />}></Route>
         </Routes>
       </BrowserRouter>
+      <Footer />
     </div>
   );
 }
