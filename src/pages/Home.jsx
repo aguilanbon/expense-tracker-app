@@ -8,7 +8,7 @@ import ExpenseContext from '../helpers/ExpenseTrackerContext'
 
 function Home() {
 
-    const { balance, setBalance, totalIncome, setTotalIncome, totalExpenses, setTotalExpenses, setTransactionDetails } = useContext(ExpenseContext)
+    const { balance, setBalance, totalIncome, setTotalIncome, totalExpenses, setTotalExpenses, setTransactionDetails, transactionDetails } = useContext(ExpenseContext)
 
     return (
         <HomeContainer>

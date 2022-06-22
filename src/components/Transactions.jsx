@@ -6,27 +6,36 @@ import { ButtonContainer, TransactionButton, TransactionContainer, TransactionIn
 
 function Transactions() {
 
-    const { setTotalIncome, setBalance, setTotalExpenses, setTransactionDetails } = useContext(ExpenseContext)
+    const { setTotalIncome, setBalance, setTotalExpenses, setTransactionDetails, transactionDetails, transaction, setTransaction } = useContext(ExpenseContext)
 
     const [transactionAmount, setTransactionAmount] = useState('')
 
     const addIncome = () => {
         setTotalIncome(prevAmount => prevAmount + parseFloat(transactionAmount))
         setBalance(prevAmount => prevAmount + parseFloat(transactionAmount))
+        setTransaction({
+            title: transactionDetails,
+            amount: transactionAmount
+        })
         setTransactionAmount('')
+        setTransactionDetails('')
     }
 
     const addExpense = () => {
         setTotalExpenses(prevAmount => prevAmount + parseFloat(transactionAmount))
         setBalance(prevAmount => prevAmount - parseFloat(transactionAmount))
+        setTransaction({
+            title: transactionDetails,
+            amount: transactionAmount
+        })
         setTransactionAmount('')
+        setTransactionDetails('')
     }
-
     return (
         <TransactionContainer>
             <HistoryH1>Add New Transaction</HistoryH1>
             <TransactionLabel>Details</TransactionLabel>
-            <TransactionInput type='text' placeholder='Enter transaction details'></TransactionInput>
+            <TransactionInput type='text' placeholder='Enter transaction details' value={transactionDetails} onChange={e => setTransactionDetails(e.target.value)}></TransactionInput>
             <TransactionLabel>Amount</TransactionLabel>
             <TransactionInput type='text' placeholder='Enter transaction amount' value={transactionAmount} onChange={e => setTransactionAmount(e.target.value)}></TransactionInput>
             <ButtonContainer>
