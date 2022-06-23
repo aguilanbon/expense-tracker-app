@@ -6,7 +6,7 @@ function History({ userTransactions }) {
     return (
         <HistoryContainer>
             <HistoryH1>History</HistoryH1>
-            {userTransactions.map(item => (
+            {userTransactions.slice(0, 3).map(item => (
                 <HistoryCardContainer key={item.id} color={item.isIncome === true ? '#5cb85c' : '#d9534f'}>
                     <TextTransaction>{item.details}</TextTransaction>
                     <TextAmount>${item.amount}</TextAmount>
