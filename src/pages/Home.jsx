@@ -38,7 +38,7 @@ function Home() {
             setCurrentExpenses(parseFloat(currentUserDetails.totalExpenses))
         }
         getUserDetails()
-    }, [balance])
+    }, [balance, currentUserDetails.balance, currentUserDetails.totalExpenses, currentUserDetails.totalIncome, setBalance, setCurrentExpenses, setCurrentIncome])
 
     return (
         <HomeContainer>
