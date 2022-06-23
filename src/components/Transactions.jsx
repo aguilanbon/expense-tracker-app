@@ -1,5 +1,5 @@
-import { addDoc, collection, doc, getDoc, getDocs, query, updateDoc, where } from 'firebase/firestore'
-import React, { useEffect, useState } from 'react'
+import { addDoc, collection, doc, updateDoc } from 'firebase/firestore'
+import React, { useState } from 'react'
 import { useContext } from 'react'
 import ExpenseContext from '../helpers/ExpenseTrackerContext'
 import { auth, db } from '../helpers/FirebaseConfig'
@@ -8,7 +8,7 @@ import { ButtonContainer, TransactionButton, TransactionContainer, TransactionIn
 
 function Transactions({ currentUserDetails }) {
 
-    const { currentIncome, currentExpenses, setBalance, setTotalExpenses, setTransactionDetails, transactionDetails, setTransaction, balance } = useContext(ExpenseContext)
+    const { currentIncome, setBalance, setTransactionDetails, transactionDetails, setTransaction, balance } = useContext(ExpenseContext)
 
     const [transactionAmount, setTransactionAmount] = useState('')
 
