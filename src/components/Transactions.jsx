@@ -1,6 +1,8 @@
+import { addDoc, collection } from 'firebase/firestore'
 import React, { useState } from 'react'
 import { useContext } from 'react'
 import ExpenseContext from '../helpers/ExpenseTrackerContext'
+import { auth, db } from '../helpers/FirebaseConfig'
 import { HistoryH1 } from './styles/History.styled'
 import { ButtonContainer, TransactionButton, TransactionContainer, TransactionInput, TransactionLabel } from './styles/Transaction.styled'
 
@@ -10,13 +12,23 @@ function Transactions() {
 
     const [transactionAmount, setTransactionAmount] = useState('')
 
-    const addIncome = () => {
+    const addIncome = async () => {
         setTotalIncome(prevAmount => prevAmount + parseFloat(transactionAmount))
         setBalance(prevAmount => prevAmount + parseFloat(transactionAmount))
         setTransaction({
             title: transactionDetails,
-            amount: transactionAmount
+            amount: transactionAmount,
+            user: auth.currentUser.uid
         })
+
+        const transactionCollection = collection(db, 'transactions')
+
+        await addDoc(transactionCollection, {
+            details: transactionDetails,
+            amount: transactionAmount,
+            user: auth.currentUser.uid
+        })
+
         setTransactionAmount('')
         setTransactionDetails('')
     }
