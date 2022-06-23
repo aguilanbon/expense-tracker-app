@@ -1,5 +1,6 @@
 import { collection, getDocs, query, where } from 'firebase/firestore'
 import React from 'react'
+import { useState } from 'react'
 import { useEffect } from 'react'
 import { useContext } from 'react'
 import BalanceCard from '../components/BalanceCard'
@@ -11,34 +12,44 @@ import { auth, db } from '../helpers/FirebaseConfig'
 
 function Home() {
 
-    const { balance } = useContext(ExpenseContext)
-    // const [userTransactions, setUserTransactions]
+    const { balance, setBalance, setCurrentIncome, setCurrentExpenses } = useContext(ExpenseContext)
+    const [userTransactions, setUserTransactions] = useState([])
+    const [currentUserDetails, setCurrentUserDetails] = useState([])
 
     useEffect(() => {
         const transactionCollection = collection(db, 'transactions')
         const getUserTransactions = async () => {
             const q = query(transactionCollection, where('user', '==', auth.currentUser.uid))
-
             const response = await getDocs(q)
-
-            response.forEach(item => {
-                console.log(item.id, item.data());
-            })
+            setUserTransactions(response.docs.map(item => ({ ...item.data(), id: item.id })))
         }
-
         getUserTransactions()
-    })
+    }, [balance])
+
+    useEffect(() => {
+        const userCollection = collection(db, 'users')
+        const getUserDetails = async () => {
+            const q = query(userCollection, where('id', '==', auth.currentUser.uid))
+            const response = await getDocs(q)
+            let data = response.docs.map(item => ({ ...item.data(), id: item.id }))
+            setCurrentUserDetails(data[0])
+            setBalance(parseFloat(currentUserDetails.balance))
+            setCurrentIncome(parseFloat(currentUserDetails.totalIncome))
+            setCurrentExpenses(parseFloat(currentUserDetails.totalExpenses))
+        }
+        getUserDetails()
+    }, [balance])
 
     return (
         <HomeContainer>
             <LeftColumn>
                 <TextH2>Your Balance</TextH2>
-                <TextH1>${parseFloat(balance).toFixed(2)}</TextH1>
-                <BalanceCard />
-                <History />
+                <TextH1>${parseFloat(currentUserDetails.balance).toFixed(2)}</TextH1>
+                <BalanceCard currentUserDetails={currentUserDetails} />
+                <History userTransactions={userTransactions} />
             </LeftColumn>
             <RightColumn>
-                <Transactions>
+                <Transactions currentUserDetails={currentUserDetails}>
 
                 </Transactions>
             </RightColumn>

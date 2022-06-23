@@ -1,20 +1,20 @@
-import { addDoc, collection } from 'firebase/firestore'
-import React, { useState } from 'react'
+import { addDoc, collection, doc, getDoc, getDocs, query, updateDoc, where } from 'firebase/firestore'
+import React, { useEffect, useState } from 'react'
 import { useContext } from 'react'
 import ExpenseContext from '../helpers/ExpenseTrackerContext'
 import { auth, db } from '../helpers/FirebaseConfig'
 import { HistoryH1 } from './styles/History.styled'
 import { ButtonContainer, TransactionButton, TransactionContainer, TransactionInput, TransactionLabel } from './styles/Transaction.styled'
 
-function Transactions() {
+function Transactions({ currentUserDetails }) {
 
-    const { setTotalIncome, setBalance, setTotalExpenses, setTransactionDetails, transactionDetails, setTransaction } = useContext(ExpenseContext)
+    const { currentIncome, currentExpenses, setBalance, setTotalExpenses, setTransactionDetails, transactionDetails, setTransaction, balance } = useContext(ExpenseContext)
 
     const [transactionAmount, setTransactionAmount] = useState('')
 
     const addIncome = async () => {
-        setTotalIncome(prevAmount => prevAmount + parseFloat(transactionAmount))
-        setBalance(prevAmount => prevAmount + parseFloat(transactionAmount))
+        // setTotalIncome(prevAmount => prevAmount + parseFloat(transactionAmount))
+        // setBalance(prevAmount => prevAmount + parseFloat(transactionAmount))
         setTransaction({
             title: transactionDetails,
             amount: transactionAmount,
@@ -22,11 +22,22 @@ function Transactions() {
         })
 
         const transactionCollection = collection(db, 'transactions')
-
         await addDoc(transactionCollection, {
             details: transactionDetails,
             amount: transactionAmount,
             user: auth.currentUser.uid
+        })
+
+        let newBalance = balance + parseFloat(transactionAmount)
+        let newIncome = currentIncome + parseFloat(transactionAmount)
+        setBalance(newBalance)
+
+        console.log(parseFloat(transactionAmount))
+
+        const userRef = doc(db, 'users', currentUserDetails.id)
+        await updateDoc(userRef, {
+            balance: parseFloat(newBalance),
+            totalIncome: parseFloat(newIncome)
         })
 
         setTransactionAmount('')
@@ -34,15 +45,16 @@ function Transactions() {
     }
 
     const addExpense = () => {
-        setTotalExpenses(prevAmount => prevAmount + parseFloat(transactionAmount))
-        setBalance(prevAmount => prevAmount - parseFloat(transactionAmount))
-        setTransaction({
-            title: transactionDetails,
-            amount: transactionAmount
-        })
+        // setTotalExpenses(prevAmount => prevAmount + parseFloat(transactionAmount))
+        // setBalance(prevAmount => prevAmount - parseFloat(transactionAmount))
+        // setTransaction({
+        //     title: transactionDetails,
+        //     amount: transactionAmount
+        // })
         setTransactionAmount('')
         setTransactionDetails('')
     }
+
     return (
         <TransactionContainer>
             <HistoryH1>Add New Transaction</HistoryH1>

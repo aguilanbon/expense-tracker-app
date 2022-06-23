@@ -1,11 +1,12 @@
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
+import { addDoc, collection } from 'firebase/firestore'
 import React from 'react'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Hero from '../components/Hero'
 import { LoginContainer } from '../components/styles/LoginContainer.styled'
 import { Input, InputDiv, InputLabel, RightCol, SignInText, StyledButton } from '../components/styles/RightCol.styled'
-import { auth } from '../helpers/FirebaseConfig'
+import { auth, db } from '../helpers/FirebaseConfig'
 
 function Signup() {
 
@@ -18,9 +19,15 @@ function Signup() {
 
     const signUpAction = async () => {
         const newUser = await createUserWithEmailAndPassword(auth, email, password)
+        await createUser(newUser.user.uid)
         await updateProfile(newUser.user, { displayName: fName + ' ' + lName })
         navigate('/')
         console.log(newUser);
+    }
+
+    const createUser = async (id) => {
+        const userCollection = collection(db, 'users')
+        await addDoc(userCollection, { fName, lName, email, id, balance: 0, totalIncome: 0, totalExpenses: 0, transactionIds: [] })
     }
 
     return (
