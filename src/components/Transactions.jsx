@@ -8,7 +8,7 @@ import { ButtonContainer, TransactionButton, TransactionContainer, TransactionIn
 
 function Transactions({ currentUserDetails }) {
 
-    const { currentIncome, setBalance, setTransactionDetails, transactionDetails, balance } = useContext(ExpenseContext)
+    const { currentIncome, setBalance, setTransactionDetails, transactionDetails, balance, currentExpenses } = useContext(ExpenseContext)
 
     const [transactionAmount, setTransactionAmount] = useState('')
 
@@ -35,7 +35,24 @@ function Transactions({ currentUserDetails }) {
         setTransactionDetails('')
     }
 
-    const addExpense = () => {
+    const addExpense = async () => {
+        const transactionCollection = collection(db, 'transactions')
+        await addDoc(transactionCollection, {
+            details: transactionDetails,
+            amount: transactionAmount,
+            isIncome: false,
+            user: auth.currentUser.uid
+        })
+
+        let newBalance = balance - parseFloat(transactionAmount)
+        let newExpense = currentExpenses + parseFloat(transactionAmount)
+        setBalance(newBalance)
+
+        const userRef = doc(db, 'users', currentUserDetails.id)
+        await updateDoc(userRef, {
+            balance: parseFloat(newBalance),
+            totalExpenses: parseFloat(newExpense)
+        })
         setTransactionAmount('')
         setTransactionDetails('')
     }
