@@ -1,4 +1,4 @@
-import { collection, getDocs, query, where } from 'firebase/firestore'
+import { collection, getDocs, orderBy, query, where } from 'firebase/firestore'
 import React from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
@@ -19,7 +19,7 @@ function Home() {
     useEffect(() => {
         const transactionCollection = collection(db, 'transactions')
         const getUserTransactions = async () => {
-            const q = query(transactionCollection, where('user', '==', auth.currentUser.uid))
+            const q = query(transactionCollection, where('user', '==', auth.currentUser.uid), orderBy('createdAt', 'desc'))
             const response = await getDocs(q)
             setUserTransactions(response.docs.map(item => ({ ...item.data(), id: item.id })))
         }

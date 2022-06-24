@@ -22,8 +22,20 @@ export const HistoryCardContainer = styled.div`
     box-shadow: 0px .2rem .7rem -10px #111;
     border-right: .4rem solid ${({color}) => color};
 `
+
+export const HistoryTextContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+`
+
 export const TextTransaction = styled.p`
     font-size: .8rem;
+`
+
+export const TextDate = styled.p`
+    font-size: .6rem;
+    opacity: .8;
 `
 
 export const TextAmount = styled.p`

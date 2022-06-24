@@ -1,4 +1,4 @@
-import { addDoc, collection, doc, updateDoc } from 'firebase/firestore'
+import { addDoc, collection, doc, serverTimestamp, updateDoc } from 'firebase/firestore'
 import React, { useState } from 'react'
 import { useContext } from 'react'
 import ExpenseContext from '../helpers/ExpenseTrackerContext'
@@ -18,6 +18,7 @@ function Transactions({ currentUserDetails }) {
             details: transactionDetails,
             amount: transactionAmount,
             isIncome: true,
+            createdAt: serverTimestamp(),
             user: auth.currentUser.uid
         })
 
@@ -41,6 +42,7 @@ function Transactions({ currentUserDetails }) {
             details: transactionDetails,
             amount: transactionAmount,
             isIncome: false,
+            createdAt: serverTimestamp(),
             user: auth.currentUser.uid
         })
 
