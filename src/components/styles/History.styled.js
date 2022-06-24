@@ -13,11 +13,11 @@ export const HistoryH1 = styled.h1`
 
 export const HistoryCardContainer = styled.div`
     width: 100%;
-    height: 1.5rem;
+    height: auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1.5rem 1rem;
+    padding: .7rem;
     margin-top: 1rem;
     box-shadow: 0px .2rem .7rem -10px #111;
     border-right: .4rem solid ${({color}) => color};
