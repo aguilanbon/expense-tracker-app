@@ -46,3 +46,7 @@ export const TransactionButton = styled.button`
         transform: scale(1.1);
     }
 `
+
+export const TransactionError = styled.p`
+    color: red;
+`

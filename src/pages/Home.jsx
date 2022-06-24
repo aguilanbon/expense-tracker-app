@@ -55,7 +55,7 @@ function Home() {
     return (
         <HomeContainer>
             <LeftColumn>
-                <TextH2>Your Balances</TextH2>
+                <TextH2>Your Balance</TextH2>
                 <TextH1>${parseFloat(currentUserDetails.balance).toFixed(2)}</TextH1>
                 <BalanceCard currentUserDetails={currentUserDetails} />
                 <History userTransactions={userTransactions} />
