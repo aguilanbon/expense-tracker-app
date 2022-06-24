@@ -2,7 +2,7 @@ import styled  from "styled-components";
 
 export const LeftCol = styled.div`
     min-width: 50%;
-    height: 100vh;
+    height: auto;
     background-color: #222831;
     display: flex;
     align-items: flex-start;
@@ -23,7 +23,7 @@ export const LeftCol = styled.div`
         align-items: flex-start;
         width: auto;
         height: 30%;
-        padding: 0 2rem;
+        padding: 1rem 2rem;
     }
 `
 

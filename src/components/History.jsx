@@ -13,7 +13,7 @@ function History({ userTransactions }) {
                 <HistoryCardContainer key={item.id} color={item.isIncome === true ? '#5cb85c' : '#d9534f'}>
                     <HistoryTextContainer>
                         <TextTransaction>{item.details}</TextTransaction>
-                        <TextDate>{item.createdAt.toDate().toLocaleDateString()}</TextDate>
+                        <TextDate>{item.createdAt.toDate().toLocaleDateString() || ''}</TextDate>
                     </HistoryTextContainer>
                     <TextAmount>{item.isIncome ? '+ ' : '- '}${item.amount}</TextAmount>
                 </HistoryCardContainer>

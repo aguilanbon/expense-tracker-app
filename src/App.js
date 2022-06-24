@@ -9,18 +9,16 @@ import { ExpenseProvider } from './helpers/ExpenseTrackerContext';
 function App() {
   return (
     <ExpenseProvider>
-      <div className="App">
         <GlobalStyles />
-        <BrowserRouter>
-          <Routes>
-            <Route path='/' element={<Login />}></Route>
-            <Route path='/home' element={<Home />}></Route>
-            <Route path='/signup' element={<Signup />}></Route>
-            <Route path='*' element={<Login />}></Route>
-          </Routes>
-        </BrowserRouter>
+          <BrowserRouter>
+            <Routes>
+              <Route path='/' element={<Login />}></Route>
+              <Route path='/home' element={<Home />}></Route>
+              <Route path='/signup' element={<Signup />}></Route>
+              <Route path='*' element={<Login />}></Route>
+            </Routes>
+          </BrowserRouter>
         <Footer />
-      </div>
     </ExpenseProvider>
   );
 }

@@ -1,15 +1,18 @@
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
 import { addDoc, collection } from 'firebase/firestore'
 import React from 'react'
+import { useContext } from 'react'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Hero from '../components/Hero'
 import { LoginContainer } from '../components/styles/LoginContainer.styled'
 import { Input, InputDiv, InputLabel, RightCol, SignInText, StyledButton } from '../components/styles/RightCol.styled'
+import ExpenseContext from '../helpers/ExpenseTrackerContext'
 import { auth, db } from '../helpers/FirebaseConfig'
 
 function Signup() {
 
+    const { setIsLoginPage } = useContext(ExpenseContext)
     const navigate = useNavigate()
 
     const [fName, setFName] = useState('')
@@ -22,6 +25,7 @@ function Signup() {
         await createUser(newUser.user.uid)
         await updateProfile(newUser.user, { displayName: fName + ' ' + lName })
         navigate('/home')
+        setIsLoginPage(false)
         console.log(newUser);
     }
 

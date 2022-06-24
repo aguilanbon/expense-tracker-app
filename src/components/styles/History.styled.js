@@ -24,7 +24,6 @@ export const HistoryLink = styled.a`
     :hover {
         transform: scale(1.1);
         padding: 0.4rem;
-        /* background-color: rgba(12,12,13,.4); */
     }
 `
 

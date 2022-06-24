@@ -2,7 +2,7 @@ import styled  from "styled-components";
 
 export const RightCol = styled.div`
     width: 50%;
-    height: 100vh;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -17,6 +17,7 @@ export const RightCol = styled.div`
 
     @media (max-width: 650px) {
         padding: 0 2rem;
+        height: auto;
     }
     
 `
@@ -32,6 +33,7 @@ export const SignInText = styled.h2`
 
     @media (max-width: 480px) {
         font-size: 1.2rem;
+        margin-bottom: 1rem;
     }
 `
 

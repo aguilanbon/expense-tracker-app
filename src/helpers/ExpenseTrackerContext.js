@@ -17,7 +17,7 @@ export const ExpenseProvider = ({children}) => {
         currentExpenses, setCurrentExpenses,
         transactionDetails, setTransactionDetails,
         transaction, setTransaction,
-        isAuth, setIsAuth
+        isAuth, setIsAuth,
     }
 
     return (

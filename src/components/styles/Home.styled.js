@@ -29,6 +29,7 @@ export const LeftColumn = styled.div`
     flex-direction: column;
     width: 50%;
     padding: 1rem;
+    height: auto;
     
     @media (max-width: 650px) {
         width: 100%;
@@ -39,6 +40,8 @@ export const RightColumn = styled.div`
     flex-direction: column;
     width: 50%;
     padding: 1rem;
+    height: auto;
+
     
     @media (max-width: 650px) {
         width: 100%;
