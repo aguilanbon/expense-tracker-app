@@ -11,6 +11,7 @@ import Transactions from '../components/Transactions'
 import User from '../components/User'
 import ExpenseContext from '../helpers/ExpenseTrackerContext'
 import { auth, db } from '../helpers/FirebaseConfig'
+import toast from 'react-hot-toast'
 
 function Home() {
 
@@ -49,6 +50,7 @@ function Home() {
     useEffect(() => {
         if (auth.currentUser === null) {
             navigate('/')
+            toast.error(`Ooops! You're not allowed to go there`)
         }
     })
 
@@ -61,7 +63,7 @@ function Home() {
                 <History userTransactions={userTransactions} />
             </LeftColumn>
             <RightColumn>
-                <User></User>
+                <User currentUserDetails={currentUserDetails}></User>
                 <Transactions currentUserDetails={currentUserDetails}></Transactions>
             </RightColumn>
         </HomeContainer>

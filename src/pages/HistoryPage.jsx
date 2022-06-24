@@ -6,6 +6,7 @@ import { HistoryCardContainer, HistoryH1, HistoryTextContainer, TextAmount, Text
 import { BackLink, HistoryPageContainer } from '../components/styles/HistoryPage.styled'
 import { auth, db } from '../helpers/FirebaseConfig'
 import { useNavigate } from 'react-router-dom'
+import toast from 'react-hot-toast'
 
 function HistoryPage() {
 
@@ -25,6 +26,7 @@ function HistoryPage() {
 
     useEffect(() => {
         if (auth.currentUser === null) {
+            toast.error(`Ooops! You're not allowed to go there`)
             navigate('/')
         }
     })

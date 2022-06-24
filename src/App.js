@@ -6,10 +6,12 @@ import Home from './pages/Home';
 import Footer from './components/Footer';
 import { ExpenseProvider } from './helpers/ExpenseTrackerContext';
 import HistoryPage from './pages/HistoryPage';
+import { Toaster } from 'react-hot-toast'
 
 function App() {
   return (
     <ExpenseProvider>
+        <Toaster />
         <GlobalStyles />
           <BrowserRouter>
             <Routes>

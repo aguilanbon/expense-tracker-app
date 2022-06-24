@@ -4,7 +4,7 @@ import { auth } from '../helpers/FirebaseConfig'
 import { useNavigate } from 'react-router-dom'
 import { UserInfoContainer, UserLogoutBtn, UserTextName } from './styles/User.styled'
 
-function User() {
+function User({ currentUserDetails }) {
 
     const navigate = useNavigate()
 
@@ -15,7 +15,7 @@ function User() {
 
     return (
         <UserInfoContainer>
-            <UserTextName>{auth.currentUser.displayName}</UserTextName>
+            <UserTextName>{currentUserDetails.fName + ' ' + currentUserDetails.lName}</UserTextName>
             <UserLogoutBtn onClick={() => signOutAction()}>Sign out</UserLogoutBtn>
         </UserInfoContainer>
     )
