@@ -11,7 +11,7 @@ import { useNavigate } from 'react-router-dom'
 
 function Login() {
 
-    const { isAuth, setIsAuth, setIsLoginPage } = useContext(ExpenseContext)
+    const { setIsAuth } = useContext(ExpenseContext)
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -21,7 +21,6 @@ function Login() {
     const signInAction = async () => {
         await signInWithEmailAndPassword(auth, email, password)
         setIsAuth(true)
-        setIsLoginPage(false)
         navigate('/home')
     }
 

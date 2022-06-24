@@ -12,7 +12,6 @@ import { auth, db } from '../helpers/FirebaseConfig'
 
 function Signup() {
 
-    const { setIsLoginPage } = useContext(ExpenseContext)
     const navigate = useNavigate()
 
     const [fName, setFName] = useState('')
@@ -25,7 +24,6 @@ function Signup() {
         await createUser(newUser.user.uid)
         await updateProfile(newUser.user, { displayName: fName + ' ' + lName })
         navigate('/home')
-        setIsLoginPage(false)
         console.log(newUser);
     }
 
