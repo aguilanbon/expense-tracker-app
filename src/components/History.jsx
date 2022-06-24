@@ -9,7 +9,7 @@ function History({ userTransactions }) {
                 <HistoryH1>History</HistoryH1>
                 <HistoryLink>View All</HistoryLink>
             </HistoryTitleContainer>
-            {userTransactions.slice(0, 3).map(item => (
+            {userTransactions.slice(0, 5).map(item => (
                 <HistoryCardContainer key={item.id} color={item.isIncome === true ? '#5cb85c' : '#d9534f'}>
                     <HistoryTextContainer>
                         <TextTransaction>{item.details}</TextTransaction>
