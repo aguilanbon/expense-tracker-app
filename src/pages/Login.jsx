@@ -1,6 +1,6 @@
 import React from 'react'
 import Hero from '../components/Hero'
-import { Input, InputDiv, InputLabel, RightCol, SignInText, StyledButton } from '../components/styles/RightCol.styled'
+import { Input, InputDiv, InputLabel, LoginErrorText, RightCol, SignInText, StyledButton } from '../components/styles/RightCol.styled'
 import { LoginContainer } from '../components/styles/LoginContainer.styled'
 import { useState } from 'react'
 import { signInWithEmailAndPassword } from 'firebase/auth'
@@ -15,13 +15,20 @@ function Login() {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [loginError, setLoginError] = useState('')
 
     const navigate = useNavigate()
 
     const signInAction = async () => {
-        await signInWithEmailAndPassword(auth, email, password)
-        setIsAuth(true)
-        navigate('/home')
+        try {
+            await signInWithEmailAndPassword(auth, email, password)
+            setIsAuth(true)
+            navigate('/home')
+        } catch (error) {
+            if (error) {
+                setLoginError('Email or Password is incorrect')
+            }
+        }
     }
 
     return (
@@ -29,6 +36,7 @@ function Login() {
             <Hero />
             <RightCol>
                 <SignInText>Log In to your Account</SignInText>
+                {loginError === '' ? '' : <LoginErrorText>{loginError}</LoginErrorText>}
                 <InputDiv>
                     <InputLabel>Email</InputLabel>
                     <Input type='text' placeholder='Your Email here...' onChange={e => setEmail(e.target.value)}></Input>

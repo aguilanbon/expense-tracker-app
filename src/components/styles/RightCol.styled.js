@@ -55,6 +55,10 @@ export const InputLabel = styled.label`
     }
 `
 
+export const LoginErrorText = styled.p`
+    color: red;
+`
+
 export const Input = styled.input`
     padding: .5rem;
     width: 50%;
