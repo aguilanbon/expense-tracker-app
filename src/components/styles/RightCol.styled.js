@@ -76,6 +76,7 @@ export const StyledButton = styled.button`
     width: 30%;
     cursor: pointer;
     border: 2px solid #FFD369;
+    margin-bottom: 1rem;
 
     :hover {
         background-color: #FFD369;

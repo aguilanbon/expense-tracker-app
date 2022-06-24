@@ -1,5 +1,6 @@
 import React from 'react'
-import { HistoryCardContainer, HistoryContainer, HistoryH1, HistoryLink, HistoryTextContainer, HistoryTitleContainer, TextAmount, TextDate, TextTransaction } from './styles/History.styled'
+import { HistoryCardContainer, HistoryContainer, HistoryH1, HistoryTextContainer, HistoryTitleContainer, TextAmount, TextDate, TextTransaction } from './styles/History.styled'
+import { Link } from 'react-router-dom'
 
 function History({ userTransactions }) {
 
@@ -7,7 +8,7 @@ function History({ userTransactions }) {
         <HistoryContainer>
             <HistoryTitleContainer>
                 <HistoryH1>History</HistoryH1>
-                <HistoryLink>View All</HistoryLink>
+                <Link to='/user/history'>View All</Link>
             </HistoryTitleContainer>
             {userTransactions.slice(0, 5).map(item => (
                 <HistoryCardContainer key={item.id} color={item.isIncome === true ? '#5cb85c' : '#d9534f'}>

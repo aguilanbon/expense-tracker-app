@@ -43,10 +43,7 @@ function Login() {
                     <InputLabel>Password</InputLabel>
                     <Input type='password' placeholder='Your password here...' onChange={e => setPassword(e.target.value)}></Input>
                     <StyledButton onClick={() => signInAction()}>Log in</StyledButton>
-
                     <p>Not Yet Signed Up? <Link to='/signup'>Click Here</Link> </p>
-
-
                 </InputDiv>
             </RightCol>
         </LoginContainer>
