@@ -3,6 +3,7 @@ import React from 'react'
 import { auth } from '../helpers/FirebaseConfig'
 import { useNavigate } from 'react-router-dom'
 import { UserInfoContainer, UserLogoutBtn, UserTextName } from './styles/User.styled'
+import toast from 'react-hot-toast'
 
 function User({ currentUserDetails }) {
 
@@ -11,6 +12,9 @@ function User({ currentUserDetails }) {
     const signOutAction = () => {
         signOut(auth)
         navigate('/')
+        toast('Goodbye!', {
+            icon: '👋'
+        })
     }
 
     return (

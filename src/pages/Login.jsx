@@ -8,6 +8,7 @@ import { auth } from '../helpers/FirebaseConfig'
 import { useContext } from 'react'
 import ExpenseContext from '../helpers/ExpenseTrackerContext'
 import { useNavigate, Link } from 'react-router-dom'
+import toast from 'react-hot-toast'
 
 function Login() {
 
@@ -24,6 +25,9 @@ function Login() {
             await signInWithEmailAndPassword(auth, email, password)
             setIsAuth(true)
             navigate('/home')
+            toast('Welcome Back!', {
+                icon: '👍'
+            })
         } catch (error) {
             if (error) {
                 setLoginError('Email or Password is incorrect')
