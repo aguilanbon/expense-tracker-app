@@ -21,7 +21,7 @@ function Login() {
     const signInAction = async () => {
         await signInWithEmailAndPassword(auth, email, password)
         setIsAuth(true)
-        navigate('/')
+        navigate('/home')
     }
 
     return (

@@ -21,7 +21,7 @@ function Signup() {
         const newUser = await createUserWithEmailAndPassword(auth, email, password)
         await createUser(newUser.user.uid)
         await updateProfile(newUser.user, { displayName: fName + ' ' + lName })
-        navigate('/')
+        navigate('/home')
         console.log(newUser);
     }
 
