@@ -6,7 +6,7 @@ export const FooterContainer = styled.div`
     padding: 1rem;
     justify-content: center;
     font-size: .7rem;
-    background-color: #222831;
-    color: #FFD369;
+    /* background-color: #222831; */
+    color: #222831;
     align-self: baseline;
 `
