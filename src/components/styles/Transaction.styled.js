@@ -34,5 +34,6 @@ export const TransactionButton = styled.button`
 
     :hover {
         background-color: ${({hv}) => hv};
+        transform: scale(1.1);
     }
 `
