@@ -8,6 +8,7 @@ import BalanceCard from '../components/BalanceCard'
 import History from '../components/History'
 import { HomeContainer, LeftColumn, RightColumn, TextH2, TextH1 } from '../components/styles/Home.styled'
 import Transactions from '../components/Transactions'
+import User from '../components/User'
 import ExpenseContext from '../helpers/ExpenseTrackerContext'
 import { auth, db } from '../helpers/FirebaseConfig'
 
@@ -60,9 +61,8 @@ function Home() {
                 <History userTransactions={userTransactions} />
             </LeftColumn>
             <RightColumn>
-                <Transactions currentUserDetails={currentUserDetails}>
-
-                </Transactions>
+                <User></User>
+                <Transactions currentUserDetails={currentUserDetails}></Transactions>
             </RightColumn>
         </HomeContainer>
     )

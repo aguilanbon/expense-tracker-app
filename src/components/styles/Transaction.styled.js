@@ -4,6 +4,7 @@ export const TransactionContainer = styled.div`
     display: flex;
     width: 100%;
     flex-direction: column;
+    padding: 0 1rem;
 `
 
 export const TransactionLabel = styled.label`

@@ -11,12 +11,13 @@ export const LeftColumn = styled.div`
     display: flex;
     flex-direction: column;
     width: 50%;
+    padding: 1rem;
 `
 export const RightColumn = styled.div`
     display: flex;
     flex-direction: column;
     width: 50%;
-    padding: 0 3rem;
+    padding: 1rem;
 `
 
 export const TextH3 = styled.h3`
