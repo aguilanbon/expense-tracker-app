@@ -31,4 +31,8 @@ export const TransactionButton = styled.button`
     background-color: ${({bg}) => bg};
     border: 1px solid ${({color}) => color};
     border-radius: 0.2rem;
+
+    :hover {
+        background-color: ${({hv}) => hv};
+    }
 `

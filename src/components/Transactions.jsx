@@ -67,8 +67,8 @@ function Transactions({ currentUserDetails }) {
             <TransactionLabel>Amount</TransactionLabel>
             <TransactionInput type='text' placeholder='Enter transaction amount' value={transactionAmount} onChange={e => setTransactionAmount(e.target.value)}></TransactionInput>
             <ButtonContainer>
-                <TransactionButton bg='#5cb85c' color='white' onClick={() => addIncome()}>Income</TransactionButton>
-                <TransactionButton bg='#d9534f' color='white' onClick={() => addExpense()} >Expense</TransactionButton>
+                <TransactionButton hv='#3dda3d' bg='#5cb85c' color='white' onClick={() => addIncome()}>Income</TransactionButton>
+                <TransactionButton hv='#e12f29' bg='#d9534f' color='white' onClick={() => addExpense()} >Expense</TransactionButton>
             </ButtonContainer>
         </TransactionContainer>
     )
