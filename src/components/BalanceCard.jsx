@@ -1,6 +1,4 @@
 import React from 'react'
-import { useContext } from 'react'
-import ExpenseContext from '../helpers/ExpenseTrackerContext'
 import { StyledCard, TransactionAmount, TransactionContainer, TransactionTypeText } from './styles/BalanceCard.styled'
 
 function BalanceCard({ currentUserDetails }) {
