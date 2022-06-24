@@ -5,6 +5,9 @@ export const TransactionContainer = styled.div`
     width: 100%;
     flex-direction: column;
     padding: 0 1rem;
+    @media (max-width: 480px) {
+        padding: 0;
+    }
 `
 
 export const TransactionLabel = styled.label`

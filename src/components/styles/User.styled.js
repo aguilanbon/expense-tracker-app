@@ -16,6 +16,9 @@ export const UserTextName = styled.h3`
     font-size: 1rem;
     opacity: .9;
     font-weight: 200;
+    @media (max-width: 480px) {
+        font-size: .8rem;
+    }
 `
 
 export const UserLogoutBtn = styled.button`
@@ -29,5 +32,9 @@ export const UserLogoutBtn = styled.button`
     :hover {
         transform: scale(1.1);
         background-color: rgb(91, 133, 337);
+    }
+
+    @media (max-width: 480px) {
+        font-size: .6rem;
     }
 `
