@@ -13,6 +13,11 @@ export const TransactionLabel = styled.label`
     margin: 1rem 0 .5rem 0;
 `
 
+export const TransactionH1 = styled.h1`
+    border-bottom: 1px solid black;
+    margin-top: 2rem;
+`
+
 export const TransactionInput = styled.input`
     width: 100%;
     padding: 0.5rem;

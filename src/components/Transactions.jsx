@@ -3,8 +3,7 @@ import React, { useState } from 'react'
 import { useContext } from 'react'
 import ExpenseContext from '../helpers/ExpenseTrackerContext'
 import { auth, db } from '../helpers/FirebaseConfig'
-import { HistoryH1 } from './styles/History.styled'
-import { ButtonContainer, TransactionButton, TransactionContainer, TransactionInput, TransactionLabel } from './styles/Transaction.styled'
+import { ButtonContainer, TransactionButton, TransactionContainer, TransactionH1, TransactionInput, TransactionLabel } from './styles/Transaction.styled'
 
 function Transactions({ currentUserDetails }) {
 
@@ -61,7 +60,7 @@ function Transactions({ currentUserDetails }) {
 
     return (
         <TransactionContainer>
-            <HistoryH1>Add New Transaction</HistoryH1>
+            <TransactionH1>Add New Transaction</TransactionH1>
             <TransactionLabel>Details</TransactionLabel>
             <TransactionInput type='text' placeholder='Enter transaction details' value={transactionDetails} onChange={e => setTransactionDetails(e.target.value)}></TransactionInput>
             <TransactionLabel>Amount</TransactionLabel>
