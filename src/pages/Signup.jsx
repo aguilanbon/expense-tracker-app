@@ -1,13 +1,11 @@
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
 import { addDoc, collection } from 'firebase/firestore'
 import React from 'react'
-import { useContext } from 'react'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Hero from '../components/Hero'
 import { LoginContainer } from '../components/styles/LoginContainer.styled'
 import { Input, InputDiv, InputLabel, RightCol, SignInText, StyledButton } from '../components/styles/RightCol.styled'
-import ExpenseContext from '../helpers/ExpenseTrackerContext'
 import { auth, db } from '../helpers/FirebaseConfig'
 
 function Signup() {
@@ -19,12 +17,20 @@ function Signup() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
+    // const [fNameError, setfNameError] = useState('')
+    // const [lNameError, setlNameError] = useState('')
+    // const [emailError, setEmailError] = useState('')
+    // const [passwordError, setPasswordError] = useState('')
+
     const signUpAction = async () => {
-        const newUser = await createUserWithEmailAndPassword(auth, email, password)
-        await createUser(newUser.user.uid)
-        await updateProfile(newUser.user, { displayName: fName + ' ' + lName })
-        navigate('/home')
-        console.log(newUser);
+        try {
+            const newUser = await createUserWithEmailAndPassword(auth, email, password)
+            await createUser(newUser.user.uid)
+            await updateProfile(newUser.user, { displayName: fName + ' ' + lName })
+            navigate('/home')
+        } catch (error) {
+            // setEmailError('Please fill in a valid email')
+        }
     }
 
     const createUser = async (id) => {
@@ -39,13 +45,13 @@ function Signup() {
                 <SignInText>Ready to Sign up?</SignInText>
                 <InputDiv>
                     <InputLabel>First Name</InputLabel>
-                    <Input type='text' placeholder='Your Given Name...' onChange={e => setFName(e.target.value)}></Input>
+                    <Input type='text' placeholder='Your Given Name...' onChange={e => setFName(e.target.value)} required></Input>
                     <InputLabel>Last Name</InputLabel>
-                    <Input type='text' placeholder='Your Given Last Name...' onChange={e => setLName(e.target.value)}></Input>
+                    <Input type='text' placeholder='Your Given Last Name...' onChange={e => setLName(e.target.value)} required></Input>
                     <InputLabel>Email</InputLabel>
-                    <Input type='email' placeholder='Your Email here...' onChange={e => setEmail(e.target.value)}></Input>
+                    <Input type='email' placeholder='Your Email here...' onChange={e => setEmail(e.target.value)} required></Input>
                     <InputLabel>Password</InputLabel>
-                    <Input type='password' placeholder='Your password here...' onChange={e => setPassword(e.target.value)}></Input>
+                    <Input type='password' placeholder='Your password here...' onChange={e => setPassword(e.target.value)} required></Input>
                     <StyledButton onClick={() => signUpAction()}>Sign up</StyledButton>
                 </InputDiv>
             </RightCol>

@@ -2,7 +2,7 @@ import styled  from "styled-components";
 
 export const RightCol = styled.div`
     width: 50%;
-    height: 100%;
+    height: auto;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -39,7 +39,6 @@ export const SignInText = styled.h2`
 
 export const InputDiv = styled.div`
     width: 100%;
-    margin: 0 auto;
     display: flex;
     flex-direction: column;
     justify-content: center;

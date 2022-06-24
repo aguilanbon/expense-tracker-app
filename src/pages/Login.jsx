@@ -7,7 +7,7 @@ import { signInWithEmailAndPassword } from 'firebase/auth'
 import { auth } from '../helpers/FirebaseConfig'
 import { useContext } from 'react'
 import ExpenseContext from '../helpers/ExpenseTrackerContext'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 
 function Login() {
 
@@ -43,6 +43,10 @@ function Login() {
                     <InputLabel>Password</InputLabel>
                     <Input type='password' placeholder='Your password here...' onChange={e => setPassword(e.target.value)}></Input>
                     <StyledButton onClick={() => signInAction()}>Log in</StyledButton>
+
+                    <p>Not Yet Signed Up? <Link to='/signup'>Click Here</Link> </p>
+
+
                 </InputDiv>
             </RightCol>
         </LoginContainer>

@@ -7,5 +7,6 @@ export const LoginContainer = styled.div`
 
     @media (max-width: 1024px) {
         flex-direction: column;
+        height: 100%;
     }
 `

@@ -15,6 +15,7 @@ export const LeftCol = styled.div`
         flex-direction: row;
         width: auto;
         height: 30%;
+        padding: 2rem 0;
     }
 
     @media (max-width: 650px) {
