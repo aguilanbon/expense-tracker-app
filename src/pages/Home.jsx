@@ -42,7 +42,6 @@ function Home() {
             setCurrentUserDetails(data[0])
         }
         getUserDetails()
-        console.log('home1');
     }, [balance, setCurrentUserDetails])
 
     useEffect(() => {
@@ -50,7 +49,6 @@ function Home() {
             navigate('/')
             toast.error(`Ooops! You're not allowed to go there`)
         }
-        console.log('home2');
     }, [navigate])
 
     return (

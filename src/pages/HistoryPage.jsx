@@ -1,4 +1,4 @@
-import { collection, getDocs, orderBy, query, where } from 'firebase/firestore'
+import { collection, getDocs, limit, orderBy, query, startAfter, where } from 'firebase/firestore'
 import React from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
@@ -12,15 +12,29 @@ function HistoryPage() {
 
     const navigate = useNavigate()
     const [userTransactions, setUserTransactions] = useState([])
+    const [pageCounter, setPageCounter] = useState(1)
+    const [lastVisible, setLastVisible] = useState([])
+    const [pageError, setPageError] = useState('')
+
+    const transactionCollection = collection(db, 'transactions')
+
+    const nextPageAction = async () => {
+        const nextQuery = query(transactionCollection, orderBy('createdAt', 'desc'), startAfter(lastVisible), limit(5))
+        const nextDocs = await getDocs(nextQuery)
+        setLastVisible(nextDocs.docs[nextDocs.docs.length - 1])
+        setUserTransactions(nextDocs.docs.map(item => ({ ...item.data(), id: item.id })))
+    }
+
+    const getUserTransactions = async () => {
+        if (auth.currentUser === null) return
+        const q = query(transactionCollection, where('user', '==', auth.currentUser.uid), orderBy('createdAt', 'desc'), limit(5))
+        const firstDocs = await getDocs(q)
+        setUserTransactions(firstDocs.docs.map(item => ({ ...item.data(), id: item.id })))
+
+        setLastVisible(firstDocs.docs[firstDocs.docs.length - 1])
+    }
 
     useEffect(() => {
-        const transactionCollection = collection(db, 'transactions')
-        const getUserTransactions = async () => {
-            if (auth.currentUser === null) return
-            const q = query(transactionCollection, where('user', '==', auth.currentUser.uid), orderBy('createdAt', 'desc'))
-            const response = await getDocs(q)
-            setUserTransactions(response.docs.map(item => ({ ...item.data(), id: item.id })))
-        }
         getUserTransactions()
     }, [])
 
@@ -44,6 +58,7 @@ function HistoryPage() {
                     <TextAmount>{item.isIncome ? '+ ' : '- '}${item.amount}</TextAmount>
                 </HistoryCardContainer>
             ))}
+            <button onClick={() => nextPageAction()}>Next Page</button>
         </HistoryPageContainer>
     )
 }
