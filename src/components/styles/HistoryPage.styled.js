@@ -5,7 +5,7 @@ export const HistoryPageContainer = styled.div`
     display: flex;
     flex-direction: column;
     width: 70%;
-    height: 100vh;
+    height: auto;
     margin: 2rem auto;
     align-items: flex-start;
     justify-content: flex-start;
