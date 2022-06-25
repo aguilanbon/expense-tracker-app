@@ -8,7 +8,7 @@ import { ButtonContainer, TransactionButton, TransactionContainer, TransactionEr
 
 function Transactions({ currentUserDetails }) {
 
-    const { currentIncome, setBalance, setTransactionDetails, transactionDetails, balance, currentExpenses } = useContext(ExpenseContext)
+    const { setBalance, setTransactionDetails, transactionDetails } = useContext(ExpenseContext)
 
     const [transactionAmount, setTransactionAmount] = useState('')
     const [detailsError, setDetailsError] = useState('')
@@ -34,8 +34,8 @@ function Transactions({ currentUserDetails }) {
                     user: auth.currentUser.uid
                 })
 
-                let newBalance = balance + parseFloat(transactionAmount)
-                let newIncome = currentIncome + parseFloat(transactionAmount)
+                let newBalance = parseFloat(currentUserDetails.balance) + parseFloat(transactionAmount)
+                let newIncome = parseFloat(currentUserDetails.totalIncome) + parseFloat(transactionAmount)
                 setBalance(newBalance)
 
                 const userRef = doc(db, 'users', currentUserDetails.id)
@@ -70,8 +70,8 @@ function Transactions({ currentUserDetails }) {
                     user: auth.currentUser.uid
                 })
 
-                let newBalance = balance - parseFloat(transactionAmount)
-                let newExpense = currentExpenses + parseFloat(transactionAmount)
+                let newBalance = parseFloat(currentUserDetails.balance) - parseFloat(transactionAmount)
+                let newExpense = parseFloat(currentUserDetails.totalExpenses) + parseFloat(transactionAmount)
                 setBalance(newBalance)
 
                 const userRef = doc(db, 'users', currentUserDetails.id)

@@ -15,11 +15,10 @@ import toast from 'react-hot-toast'
 
 function Home() {
 
-    const { balance, setBalance, setCurrentIncome, setCurrentExpenses } = useContext(ExpenseContext)
+    const { balance, currentUserDetails, setCurrentUserDetails } = useContext(ExpenseContext)
     const [userTransactions, setUserTransactions] = useState([])
-    const [currentUserDetails, setCurrentUserDetails] = useState([])
 
-    let navigate = useNavigate()
+    const navigate = useNavigate()
 
     useEffect(() => {
         const transactionCollection = collection(db, 'transactions')
@@ -32,6 +31,7 @@ function Home() {
         getUserTransactions()
     }, [balance])
 
+
     useEffect(() => {
         const userCollection = collection(db, 'users')
         const getUserDetails = async () => {
@@ -40,19 +40,18 @@ function Home() {
             const response = await getDocs(q)
             let data = response.docs.map(item => ({ ...item.data(), id: item.id }))
             setCurrentUserDetails(data[0])
-            setBalance(parseFloat(currentUserDetails.balance))
-            setCurrentIncome(parseFloat(currentUserDetails.totalIncome))
-            setCurrentExpenses(parseFloat(currentUserDetails.totalExpenses))
         }
         getUserDetails()
-    }, [balance, currentUserDetails.balance, currentUserDetails.totalExpenses, currentUserDetails.totalIncome, setBalance, setCurrentExpenses, setCurrentIncome])
+        console.log('home1');
+    }, [balance, setCurrentUserDetails])
 
     useEffect(() => {
         if (auth.currentUser === null) {
             navigate('/')
             toast.error(`Ooops! You're not allowed to go there`)
         }
-    })
+        console.log('home2');
+    }, [navigate])
 
     return (
         <HomeContainer>

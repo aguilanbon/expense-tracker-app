@@ -10,6 +10,7 @@ export const ExpenseProvider = ({children}) => {
     const [transaction, setTransaction] = useState({})
     const [transactionDetails, setTransactionDetails] = useState('')
     const [isAuth, setIsAuth] = useState(false)
+    const [currentUserDetails, setCurrentUserDetails] = useState([])
 
     const value = {
         balance, setBalance,
@@ -18,6 +19,7 @@ export const ExpenseProvider = ({children}) => {
         transactionDetails, setTransactionDetails,
         transaction, setTransaction,
         isAuth, setIsAuth,
+        currentUserDetails, setCurrentUserDetails
     }
 
     return (
