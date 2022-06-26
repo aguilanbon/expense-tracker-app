@@ -65,7 +65,7 @@ function HistoryPage() {
             {/* {pageError === '' ? <button onClick={() => nextPageAction()}>Next Page</button> : ''} */}
             <PageButtonContainer>
                 <PageButton> prev </PageButton>
-                <PageButton onClick={() => nextPageAction()}> next </PageButton>
+                {userTransactions.length < 5 ? '' : <PageButton onClick={() => nextPageAction()}> next </PageButton>}
             </PageButtonContainer>
         </HistoryPageContainer>
     )
