@@ -30,3 +30,26 @@ export const BackLink = styled(Link)`
     background-color: rgb(231, 232, 231);
     }
 `
+
+export const PageButtonContainer = styled.div`
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+`
+
+export const PageButton = styled.button`
+    border: none;
+    border-radius: .2rem;
+    padding: .2rem 1rem;
+    font-size: .6rem;
+    margin-top: 1rem;
+    cursor: pointer;
+    color: white;
+    background-color: rgba(81, 123, 237, .8);
+    margin: 1rem .3rem;
+
+    :hover {
+        background-color: rgb(81, 123, 237);
+    }
+`
