@@ -14,6 +14,7 @@ function HistoryPage() {
     const [userTransactions, setUserTransactions] = useState([])
     const [lastVisible, setLastVisible] = useState([])
     const [pageError, setPageError] = useState('')
+    const [pageCounter, setPageCounter] = useState(1)
 
     const transactionCollection = collection(db, 'transactions')
 
@@ -23,6 +24,7 @@ function HistoryPage() {
             const nextDocs = await getDocs(nextQuery)
             setLastVisible(nextDocs.docs[nextDocs.docs.length - 1])
             setUserTransactions(nextDocs.docs.map(item => ({ ...item.data(), id: item.id })))
+            setPageCounter(prev => prev + 1)
         } catch (error) {
             setPageError('no more')
         }
@@ -34,6 +36,7 @@ function HistoryPage() {
             const prevDocs = await getDocs(prevQuery)
             setLastVisible(prevDocs.docs[prevDocs.docs.length - 1])
             setUserTransactions(prevDocs.docs.map(item => ({ ...item.data(), id: item.id })))
+            setPageCounter(prev => prev - 1)
         } catch (error) {
 
         }
@@ -74,7 +77,7 @@ function HistoryPage() {
             ))}
             {pageError}
             <PageButtonContainer>
-                <PageButton onClick={() => prevPageAction()}> prev </PageButton>
+                {pageCounter === 1 ? '' : <PageButton onClick={() => prevPageAction()}> prev </PageButton>}
                 {userTransactions.length < 5 ? '' : <PageButton onClick={() => nextPageAction()}> next </PageButton>}
             </PageButtonContainer>
         </HistoryPageContainer>
