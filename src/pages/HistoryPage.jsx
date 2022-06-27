@@ -1,4 +1,4 @@
-import { collection, getDocs, limit, orderBy, query, startAfter, where } from 'firebase/firestore'
+import { collection, endBefore, getDocs, limit, orderBy, query, startAfter, where } from 'firebase/firestore'
 import React from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
@@ -19,7 +19,7 @@ function HistoryPage() {
 
     const nextPageAction = async () => {
         try {
-            const nextQuery = query(transactionCollection, orderBy('createdAt', 'desc'), startAfter(lastVisible), limit(5))
+            const nextQuery = query(transactionCollection, where('user', '==', auth.currentUser.uid), orderBy('createdAt', 'desc'), startAfter(lastVisible), limit(5))
             const nextDocs = await getDocs(nextQuery)
             setLastVisible(nextDocs.docs[nextDocs.docs.length - 1])
             setUserTransactions(nextDocs.docs.map(item => ({ ...item.data(), id: item.id })))
@@ -27,6 +27,17 @@ function HistoryPage() {
             setPageError('no more')
         }
     }
+
+    // const prevPageAction = async () => {
+    //     try {
+    //         const prevQuery = query(transactionCollection, orderBy('createdAt', 'desc'), endBefore(userTransactions.length - 1), limit(5))
+    //         const prevDocs = await getDocs(prevQuery)
+    //         setLastVisible(prevDocs.docs[prevDocs.docs.length - 1])
+    //         console.log(prevDocs.docs.map(item => ({ ...item.data(), id: item.id })));
+    //     } catch (error) {
+
+    //     }
+    // }
 
     const getUserTransactions = async () => {
         if (auth.currentUser === null) return
