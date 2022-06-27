@@ -28,16 +28,16 @@ function HistoryPage() {
         }
     }
 
-    // const prevPageAction = async () => {
-    //     try {
-    //         const prevQuery = query(transactionCollection, orderBy('createdAt', 'desc'), endBefore(userTransactions.length - 1), limit(5))
-    //         const prevDocs = await getDocs(prevQuery)
-    //         setLastVisible(prevDocs.docs[prevDocs.docs.length - 1])
-    //         console.log(prevDocs.docs.map(item => ({ ...item.data(), id: item.id })));
-    //     } catch (error) {
+    const prevPageAction = async () => {
+        try {
+            const prevQuery = query(transactionCollection, where('user', '==', auth.currentUser.uid), orderBy('createdAt', 'desc'), endBefore(userTransactions.length - 1), limit(5))
+            const prevDocs = await getDocs(prevQuery)
+            setLastVisible(prevDocs.docs[prevDocs.docs.length - 1])
+            setUserTransactions(prevDocs.docs.map(item => ({ ...item.data(), id: item.id })))
+        } catch (error) {
 
-    //     }
-    // }
+        }
+    }
 
     const getUserTransactions = async () => {
         if (auth.currentUser === null) return
@@ -74,7 +74,7 @@ function HistoryPage() {
             ))}
             {pageError}
             <PageButtonContainer>
-                <PageButton> prev </PageButton>
+                <PageButton onClick={() => prevPageAction()}> prev </PageButton>
                 {userTransactions.length < 5 ? '' : <PageButton onClick={() => nextPageAction()}> next </PageButton>}
             </PageButtonContainer>
         </HistoryPageContainer>
