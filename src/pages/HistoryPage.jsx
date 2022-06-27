@@ -12,7 +12,6 @@ function HistoryPage() {
 
     const navigate = useNavigate()
     const [userTransactions, setUserTransactions] = useState([])
-    const [pageCounter, setPageCounter] = useState(1)
     const [lastVisible, setLastVisible] = useState([])
     const [pageError, setPageError] = useState('')
 
@@ -62,7 +61,7 @@ function HistoryPage() {
                     <TextAmount>{item.isIncome ? '+ ' : '- '}${item.amount}</TextAmount>
                 </HistoryCardContainer>
             ))}
-            {/* {pageError === '' ? <button onClick={() => nextPageAction()}>Next Page</button> : ''} */}
+            {pageError}
             <PageButtonContainer>
                 <PageButton> prev </PageButton>
                 {userTransactions.length < 5 ? '' : <PageButton onClick={() => nextPageAction()}> next </PageButton>}
