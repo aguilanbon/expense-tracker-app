@@ -38,6 +38,7 @@ export const HistoryCardContainer = styled.div`
     justify-content: space-between;
     padding: .7rem;
     margin-top: .5rem;
+    border-radius: 0.15rem;
     box-shadow: 0px .2rem .7rem -10px #111;
     border-right: .4rem solid ${({color}) => color};
 `
