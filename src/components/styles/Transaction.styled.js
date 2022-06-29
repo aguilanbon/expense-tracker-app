@@ -53,4 +53,5 @@ export const TransactionButton = styled.button`
 
 export const TransactionError = styled.p`
     color: red;
+    margin-top: .3rem;
 `

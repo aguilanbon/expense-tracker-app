@@ -21,37 +21,41 @@ function Transactions({ currentUserDetails }) {
             setDetailsError('Details must not be empty or less than 2 characters')
             setIsClicked(false)
         } else {
-            if (transactionAmount <= 0) {
-                setAmountError('Amount must be valid')
-                setDetailsError('')
-                setIsClicked(false)
-            } else {
-                setDetailsError('')
-                setAmountError('')
-                await addDoc(transactionCollection, {
-                    details: transactionDetails,
-                    amount: transactionAmount,
-                    isIncome: true,
-                    createdAt: serverTimestamp(),
-                    user: auth.currentUser.uid
-                })
+            setDetailsError('')
+        }
+        if (transactionAmount <= 0) {
+            setAmountError('Amount must be valid')
+            setIsClicked(false)
+        } else {
+            setAmountError('')
+        }
+        if (transactionDetails.length > 2 && transactionAmount > 0) {
+            setDetailsError('')
+            setAmountError('')
+            await addDoc(transactionCollection, {
+                details: transactionDetails,
+                amount: transactionAmount,
+                isIncome: true,
+                createdAt: serverTimestamp(),
+                user: auth.currentUser.uid
+            })
 
-                let newBalance = parseFloat(currentUserDetails.balance) + parseFloat(transactionAmount)
-                let newIncome = parseFloat(currentUserDetails.totalIncome) + parseFloat(transactionAmount)
-                setBalance(newBalance)
+            let newBalance = parseFloat(currentUserDetails.balance) + parseFloat(transactionAmount)
+            let newIncome = parseFloat(currentUserDetails.totalIncome) + parseFloat(transactionAmount)
+            setBalance(newBalance)
 
-                const userRef = doc(db, 'users', currentUserDetails.id)
-                await updateDoc(userRef, {
-                    balance: parseFloat(newBalance),
-                    totalIncome: parseFloat(newIncome)
-                })
+            const userRef = doc(db, 'users', currentUserDetails.id)
+            await updateDoc(userRef, {
+                balance: parseFloat(newBalance),
+                totalIncome: parseFloat(newIncome)
+            })
 
-                setTransactionAmount('')
-                setTransactionDetails('')
-                setIsClicked(false)
-            }
+            setTransactionAmount('')
+            setTransactionDetails('')
+            setIsClicked(false)
         }
     }
+
 
 
     const addExpense = async () => {
@@ -60,34 +64,37 @@ function Transactions({ currentUserDetails }) {
             setDetailsError('Details must not be empty or less than 2 characters')
             setIsClicked(false)
         } else {
-            if (transactionAmount <= 0) {
-                setAmountError('Amount must be valid')
-                setDetailsError('')
-                setIsClicked(false)
-            } else {
-                setAmountError('')
-                setDetailsError('')
-                await addDoc(transactionCollection, {
-                    details: transactionDetails,
-                    amount: transactionAmount,
-                    isIncome: false,
-                    createdAt: serverTimestamp(),
-                    user: auth.currentUser.uid
-                })
+            setDetailsError('')
+        }
+        if (transactionAmount <= 0) {
+            setAmountError('Amount must be valid')
+            setIsClicked(false)
+        } else {
+            setAmountError('')
+        }
+        if (transactionDetails.length > 2 && transactionAmount > 0) {
+            setAmountError('')
+            setDetailsError('')
+            await addDoc(transactionCollection, {
+                details: transactionDetails,
+                amount: transactionAmount,
+                isIncome: false,
+                createdAt: serverTimestamp(),
+                user: auth.currentUser.uid
+            })
 
-                let newBalance = parseFloat(currentUserDetails.balance) - parseFloat(transactionAmount)
-                let newExpense = parseFloat(currentUserDetails.totalExpenses) + parseFloat(transactionAmount)
-                setBalance(newBalance)
+            let newBalance = parseFloat(currentUserDetails.balance) - parseFloat(transactionAmount)
+            let newExpense = parseFloat(currentUserDetails.totalExpenses) + parseFloat(transactionAmount)
+            setBalance(newBalance)
 
-                const userRef = doc(db, 'users', currentUserDetails.id)
-                await updateDoc(userRef, {
-                    balance: parseFloat(newBalance),
-                    totalExpenses: parseFloat(newExpense)
-                })
-                setTransactionAmount('')
-                setTransactionDetails('')
-                setIsClicked(false)
-            }
+            const userRef = doc(db, 'users', currentUserDetails.id)
+            await updateDoc(userRef, {
+                balance: parseFloat(newBalance),
+                totalExpenses: parseFloat(newExpense)
+            })
+            setTransactionAmount('')
+            setTransactionDetails('')
+            setIsClicked(false)
         }
     }
 
