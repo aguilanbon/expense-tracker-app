@@ -39,10 +39,10 @@ export const PageButtonContainer = styled.div`
 `
 
 export const PageButton = styled.button`
-    border: 1px solid rgba(81, 123, 237, .8);;
+    border: 1.5px solid rgba(81, 123, 237, .4);;
     border-radius: .2rem;
     padding: .2rem 1rem;
-    font-size: .6rem;
+    font-size: .7rem;
     margin-top: 1rem;
     cursor: pointer;
     background-color: white;
