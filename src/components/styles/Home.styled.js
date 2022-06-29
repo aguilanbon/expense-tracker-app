@@ -15,12 +15,12 @@ export const HomeContainer = styled.div`
     }
     @media (max-width: 650px) {
         width: 100%;
-        flex-direction: column;
+        flex-direction: column-reverse;
         padding: 3rem;
     }    
     @media (max-width: 480px) {
         width: 100%;
-        flex-direction: column;
+        flex-direction: column-reverse;
         padding: 0.5rem;
     }
 `
@@ -42,7 +42,6 @@ export const RightColumn = styled.div`
     padding: 1rem;
     height: auto;
 
-    
     @media (max-width: 650px) {
         width: 100%;
     }
