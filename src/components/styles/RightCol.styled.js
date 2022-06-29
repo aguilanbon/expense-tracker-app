@@ -80,11 +80,15 @@ export const StyledButton = styled.button`
     background-image: linear-gradient(to left, transparent 50%, #FFD369 50%);
     background-size: 200%;
     background-position: right;
-    transition: .5s ease-in;
+    transition: .3s ease-in;
 
     :hover {
         background-position: left;
         color: white;
+    }
+
+    :active {
+        transform: translateY(3em);
     }
 
     @media (max-width: 650px) {
