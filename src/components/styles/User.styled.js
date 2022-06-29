@@ -30,7 +30,7 @@ export const UserLogoutBtn = styled.button`
     cursor: pointer;
 
     :hover {
-        transform: scale(1.1);
+        /* transform: scale(1.1); */
         background-color: #544a7d;
         color: white;
     }

@@ -60,7 +60,7 @@ function Home() {
     return (
         <HomeContainer>
             <LeftColumn>
-                <div className="div" style={{ display: 'flex', flexDirection: 'column', padding: '2rem', color: '#544a7d', border: '1px solid #544a7d', borderRadius: '.5rem' }}>
+                <div className="div" style={{ display: 'flex', flexDirection: 'column', padding: '2rem', color: '#544a7d', border: '2px solid #544a7d', borderRadius: '.5rem' }}>
                     <TextH2>Your Balance</TextH2>
                     <TextH1>${parseFloat(currentUserDetails.balance).toFixed(2)}</TextH1>
                 </div>
