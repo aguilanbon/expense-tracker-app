@@ -22,16 +22,17 @@ export const UserTextName = styled.h3`
 `
 
 export const UserLogoutBtn = styled.button`
-    border: none;
-    background-color: rgb(81, 123, 237);
+    border: 1px solid #544a7d;
+    background-color: white;
+    color: #544a7d;
     padding: .3rem 1rem;
-    color: white;
     border-radius: 0.2rem;
     cursor: pointer;
 
     :hover {
         transform: scale(1.1);
-        background-color: rgb(91, 133, 337);
+        background-color: #544a7d;
+        color: white;
     }
 
     @media (max-width: 480px) {
