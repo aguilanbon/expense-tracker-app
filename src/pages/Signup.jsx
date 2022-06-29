@@ -34,7 +34,13 @@ function Signup() {
                 await createUser(newUser.user.uid)
                 await updateProfile(newUser.user, { displayName: fName + ' ' + lName })
                 navigate('/')
-                toast.success('You may now log in')
+                toast.success('You may now log in', {
+                    style: {
+                        borderRadius: '10px',
+                        background: '#333',
+                        color: '#fff',
+                    },
+                })
             }
         } catch (error) {
             error ? setEmailError('Please Fill in a valid Email') : setEmailError('')

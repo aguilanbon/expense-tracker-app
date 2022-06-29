@@ -47,7 +47,13 @@ function Home() {
     useEffect(() => {
         if (auth.currentUser === null) {
             navigate('/')
-            toast.error(`Ooops! You're not allowed to go there`)
+            toast.error(`Ooops! You're not allowed to go there`, {
+                style: {
+                    borderRadius: '10px',
+                    background: '#333',
+                    color: '#fff',
+                },
+            })
         }
     }, [navigate])
 

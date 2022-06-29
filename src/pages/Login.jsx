@@ -26,7 +26,12 @@ function Login() {
             setIsAuth(true)
             navigate('/home')
             toast('Welcome Back!', {
-                icon: '👍'
+                icon: '👍',
+                style: {
+                    borderRadius: '10px',
+                    background: '#333',
+                    color: '#fff',
+                },
             })
         } catch (error) {
             if (error) {

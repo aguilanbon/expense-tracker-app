@@ -13,7 +13,12 @@ function User({ currentUserDetails }) {
         signOut(auth)
         navigate('/')
         toast('Goodbye!', {
-            icon: '👋'
+            icon: '👋',
+            style: {
+                borderRadius: '10px',
+                background: '#333',
+                color: '#fff',
+            },
         })
     }
 
