@@ -13,6 +13,7 @@ function Transactions({ currentUserDetails }) {
     const [transactionAmount, setTransactionAmount] = useState('')
     const [detailsError, setDetailsError] = useState('')
     const [amountError, setAmountError] = useState('')
+    const [isClicked, setIsClicked] = useState(false)
 
     const addIncome = async () => {
         const transactionCollection = collection(db, 'transactions')
@@ -46,6 +47,7 @@ function Transactions({ currentUserDetails }) {
 
                 setTransactionAmount('')
                 setTransactionDetails('')
+                setIsClicked(false)
             }
         }
     }
@@ -81,6 +83,7 @@ function Transactions({ currentUserDetails }) {
                 })
                 setTransactionAmount('')
                 setTransactionDetails('')
+                setIsClicked(false)
             }
         }
     }
@@ -99,8 +102,14 @@ function Transactions({ currentUserDetails }) {
             <TransactionInput type='number' placeholder='Enter transaction amount' value={transactionAmount} onChange={e => setTransactionAmount(e.target.value)}></TransactionInput>
             {amountError === '' ? '' : <TransactionError>{amountError}</TransactionError>}
             <ButtonContainer>
-                <TransactionButton hv='#58e958' bg='#5cb85c' color='white' onClick={() => addIncome()}>Income</TransactionButton>
-                <TransactionButton hv='#e12f29' bg='#d9534f' color='white' onClick={() => addExpense()} >Expense</TransactionButton>
+                <TransactionButton hv='#58e958' bg='#5cb85c' color='white' onClick={() => {
+                    setIsClicked(true)
+                    addIncome()
+                }} disabled={isClicked}>Income</TransactionButton>
+                <TransactionButton hv='#e12f29' bg='#d9534f' color='white' onClick={() => {
+                    setIsClicked(true)
+                    addExpense()
+                }} disabled={isClicked}>Expense</TransactionButton>
             </ButtonContainer>
         </TransactionContainer>
     )
