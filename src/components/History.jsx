@@ -11,7 +11,7 @@ function History({ userTransactions }) {
                 <Link to='/user/history'>View All</Link>
             </HistoryTitleContainer>
             {userTransactions.slice(0, 5).map(item => (
-                <HistoryCardContainer key={item.id} color={item.isIncome === true ? '#5cb85c' : '#d9534f'}>
+                <HistoryCardContainer key={item.id} color={item.isIncome === true ? '#6be585' : '#dd3e54'}>
                     <HistoryTextContainer>
                         <TextTransaction>{item.details}</TextTransaction>
                         <TextDate>{item.createdAt.toDate().toLocaleDateString() || ''}</TextDate>
