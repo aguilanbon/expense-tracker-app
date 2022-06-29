@@ -60,8 +60,10 @@ function Home() {
     return (
         <HomeContainer>
             <LeftColumn>
-                <TextH2>Your Balance</TextH2>
-                <TextH1>${parseFloat(currentUserDetails.balance).toFixed(2)}</TextH1>
+                <div className="div" style={{ display: 'flex', flexDirection: 'column', padding: '2rem', backgroundColor: '#544a7d', color: 'white', borderRadius: '.5rem' }}>
+                    <TextH2>Your Balance</TextH2>
+                    <TextH1>${parseFloat(currentUserDetails.balance).toFixed(2)}</TextH1>
+                </div>
                 <BalanceCard currentUserDetails={currentUserDetails} />
                 <History userTransactions={userTransactions} />
             </LeftColumn>

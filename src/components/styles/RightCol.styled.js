@@ -65,12 +65,12 @@ export const Input = styled.input`
     padding: .2rem .5rem;
     width: 50%;
     border: none;
-    border-bottom: 1px solid #0B486B;
+    border-bottom: 1px solid #413b5f;
     font-size: .8rem;
     transition: all 1 ease;
 
     :focus {
-        border-bottom: 2px solid #0B486B;
+        border-bottom: 2px solid #413b5f;
         outline-color: transparent;
     }
         @media (max-width: 650px) {
