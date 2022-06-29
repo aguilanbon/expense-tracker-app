@@ -45,6 +45,10 @@ export const TransactionButton = styled.button`
         background-color: ${({hv}) => hv};
         transform: scale(1.1);
     }
+
+    :active {
+        transform: scale(1);
+    }
 `
 
 export const TransactionError = styled.p`

@@ -102,7 +102,7 @@ function Transactions({ currentUserDetails }) {
             <TransactionInput type='number' placeholder='Enter transaction amount' value={transactionAmount} onChange={e => setTransactionAmount(e.target.value)}></TransactionInput>
             {amountError === '' ? '' : <TransactionError>{amountError}</TransactionError>}
             <ButtonContainer>
-                <TransactionButton hv='#58e958' bg='#5cb85c' color='white' onClick={() => {
+                <TransactionButton hv='#4ecd4e' bg='#5cb85c' color='white' onClick={() => {
                     setIsClicked(true)
                     addIncome()
                 }} disabled={isClicked}>Income</TransactionButton>
