@@ -77,10 +77,13 @@ export const StyledButton = styled.button`
     cursor: pointer;
     border: 2px solid #FFD369;
     margin-bottom: 1rem;
+    background-image: linear-gradient(to left, transparent 50%, #FFD369 50%);
+    background-size: 200%;
+    background-position: right;
+    transition: .5s ease-in;
 
     :hover {
-        background-color: #FFD369;
-        border: none;
+        background-position: left;
         color: white;
     }
 
