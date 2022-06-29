@@ -2,6 +2,7 @@ import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
 import { addDoc, collection } from 'firebase/firestore'
 import React from 'react'
 import { useState } from 'react'
+import toast from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom'
 import Hero from '../components/Hero'
 import { LoginContainer } from '../components/styles/LoginContainer.styled'
@@ -23,14 +24,11 @@ function Signup() {
     // const [passwordError, setPasswordError] = useState('')
 
     const signUpAction = async () => {
-        try {
-            const newUser = await createUserWithEmailAndPassword(auth, email, password)
-            await createUser(newUser.user.uid)
-            await updateProfile(newUser.user, { displayName: fName + ' ' + lName })
-            navigate('/home')
-        } catch (error) {
-            // setEmailError('Please fill in a valid email')
-        }
+        const newUser = await createUserWithEmailAndPassword(auth, email, password)
+        await createUser(newUser.user.uid)
+        await updateProfile(newUser.user, { displayName: fName + ' ' + lName })
+        navigate('/')
+        toast.success('You may now log in')
     }
 
     const createUser = async (id) => {
