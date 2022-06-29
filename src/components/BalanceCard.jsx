@@ -6,7 +6,7 @@ function BalanceCard({ currentUserDetails }) {
         <StyledCard>
             <TransactionContainer>
                 <TransactionTypeText>INCOME</TransactionTypeText>
-                <TransactionAmount color='#6be585'>${parseFloat(currentUserDetails.totalIncome).toFixed(2)}</TransactionAmount>
+                <TransactionAmount color='#2ebf91'>${parseFloat(currentUserDetails.totalIncome).toFixed(2)}</TransactionAmount>
             </TransactionContainer>
             <TransactionContainer>
                 <TransactionTypeText>EXPENSES</TransactionTypeText>

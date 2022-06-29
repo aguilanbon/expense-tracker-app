@@ -76,7 +76,7 @@ function HistoryPage() {
             <BackLink to='/home'>{'< '}Go back</BackLink>
             <HistoryH1>Your Transaction History</HistoryH1>
             {userTransactions.map(item => (
-                <HistoryCardContainer key={item.id} color={item.isIncome === true ? '#5cb85c' : '#d9534f'}>
+                <HistoryCardContainer key={item.id} color={item.isIncome === true ? '#2ebf91' : '#d9534f'}>
                     <HistoryTextContainer>
                         <TextTransaction>{item.details}</TextTransaction>
                         <TextDate>{item.createdAt.toDate().toLocaleDateString() || ''}</TextDate>
