@@ -5,7 +5,7 @@ export const StyledCard = styled.div`
     height: auto;
     border-radius: .5rem;
     display: flex;
-    margin: 2rem auto;
+    margin: 1rem auto;
 ` 
 
 export const TransactionContainer = styled.div`

@@ -6,7 +6,7 @@ import { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import BalanceCard from '../components/BalanceCard'
 import History from '../components/History'
-import { HomeContainer, LeftColumn, RightColumn, TextH2, TextH1 } from '../components/styles/Home.styled'
+import { HomeContainer, LeftColumn, RightColumn, TextH2, TextH1, UserBalanceCardContainer } from '../components/styles/Home.styled'
 import Transactions from '../components/Transactions'
 import User from '../components/User'
 import ExpenseContext from '../helpers/ExpenseTrackerContext'
@@ -60,10 +60,10 @@ function Home() {
     return (
         <HomeContainer>
             <LeftColumn>
-                <div className="div" style={{ display: 'flex', flexDirection: 'column', padding: '2rem', color: '#544a7d', border: '2px solid #544a7d', borderRadius: '.5rem' }}>
+                <UserBalanceCardContainer>
                     <TextH2>Your Balance</TextH2>
                     <TextH1>${parseFloat(currentUserDetails.balance).toFixed(2)}</TextH1>
-                </div>
+                </UserBalanceCardContainer>
                 <BalanceCard currentUserDetails={currentUserDetails} />
                 <History userTransactions={userTransactions} />
             </LeftColumn>

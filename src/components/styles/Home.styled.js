@@ -47,6 +47,16 @@ export const RightColumn = styled.div`
     }
 `
 
+export const UserBalanceCardContainer = styled.div`
+/* display: 'flex', flexDirection: 'column', padding: '2rem', color: '#544a7d', border: '2px solid #544a7d', borderRadius: '.5rem'; */
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem 2rem;
+    color: #544a7d;
+    border: 2px solid #544a7d;
+    border-radius: 0.5rem;
+`
+
 export const TextH3 = styled.h3`
     font-size: 1.5rem;
 `
