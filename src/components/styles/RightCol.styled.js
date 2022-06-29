@@ -49,6 +49,7 @@ export const InputLabel = styled.label`
     font-size: .8rem;
     padding: .5em;
     width: 50%;
+    margin-top: .8rem;
     @media (max-width: 650px) {
         width: 90%;
     }
@@ -61,7 +62,7 @@ export const LoginErrorText = styled.p`
 `
 
 export const Input = styled.input`
-    padding: .5rem;
+    padding: .2rem .5rem;
     width: 50%;
     border: none;
     border-bottom: 1px solid #0B486B;
