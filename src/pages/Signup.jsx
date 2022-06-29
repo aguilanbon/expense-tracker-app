@@ -6,7 +6,7 @@ import toast from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom'
 import Hero from '../components/Hero'
 import { LoginContainer } from '../components/styles/LoginContainer.styled'
-import { Input, InputDiv, InputLabel, RightCol, SignInText, StyledButton } from '../components/styles/RightCol.styled'
+import { Input, InputDiv, InputLabel, LoginErrorText, RightCol, SignInText, StyledButton } from '../components/styles/RightCol.styled'
 import { auth, db } from '../helpers/FirebaseConfig'
 
 function Signup() {
@@ -54,16 +54,16 @@ function Signup() {
                 <InputDiv>
                     <InputLabel>First Name</InputLabel>
                     <Input type='text' placeholder='Your Given Name...' onChange={e => setFName(e.target.value)} required></Input>
-                    {fNameError}
+                    {fNameError ? <LoginErrorText>{fNameError}</LoginErrorText> : ''}
                     <InputLabel>Last Name</InputLabel>
                     <Input type='text' placeholder='Your Given Last Name...' onChange={e => setLName(e.target.value)} required></Input>
-                    {lNameError}
+                    {lNameError ? <LoginErrorText>{lNameError}</LoginErrorText> : ''}
                     <InputLabel>Email</InputLabel>
                     <Input type='email' placeholder='Your Email here...' onChange={e => setEmail(e.target.value)} required></Input>
-                    {emailError}
+                    {emailError ? <LoginErrorText>{emailError}</LoginErrorText> : ''}
                     <InputLabel>Password</InputLabel>
                     <Input type='password' placeholder='Your password here...' onChange={e => setPassword(e.target.value)} required></Input>
-                    {passwordError}
+                    {passwordError ? <LoginErrorText>{passwordError}</LoginErrorText> : ''}
                     <StyledButton onClick={() => signUpAction()}>Sign up</StyledButton>
                 </InputDiv>
             </RightCol>

@@ -46,7 +46,7 @@ export const InputDiv = styled.div`
 `
 
 export const InputLabel = styled.label`
-    font-size: 1rem;
+    font-size: .8rem;
     padding: .5em;
     width: 50%;
     @media (max-width: 650px) {
@@ -55,13 +55,23 @@ export const InputLabel = styled.label`
 `
 
 export const LoginErrorText = styled.p`
-    color: red;
+    color: #f44336;
+    font-weight: 600;
+    margin-top: .3rem;
 `
 
 export const Input = styled.input`
     padding: .5rem;
     width: 50%;
+    border: none;
+    border-bottom: 1px solid #0B486B;
     font-size: .8rem;
+    transition: all 1 ease;
+
+    :focus {
+        border-bottom: 2px solid #0B486B;
+        outline-color: transparent;
+    }
         @media (max-width: 650px) {
         width: 90%;
     }
