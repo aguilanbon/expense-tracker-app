@@ -19,15 +19,16 @@ export const BackLink = styled(Link)`
     font-size: .8rem;
     margin-bottom: 1rem;
     text-decoration: none;
-
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
-            background-color: rgb(191, 191, 191);
-        color: aliceblue;
+    background-color: white;
+    color: #544a7d;
+    border: 1px solid #544a7d;
+    opacity: .7;
 
     :hover {
-    color: rgb(81, 123, 237);
-    background-color: rgb(231, 232, 231);
+    color: #544a7d;
+    opacity: 1;
     }
 `
 
@@ -39,18 +40,18 @@ export const PageButtonContainer = styled.div`
 `
 
 export const PageButton = styled.button`
-    border: 1.5px solid rgba(81, 123, 237, .4);;
+    border: 1px solid #544a7d;
     border-radius: .2rem;
     padding: .2rem 1rem;
     font-size: .7rem;
     margin-top: 1rem;
     cursor: pointer;
     background-color: white;
-    color: rgba(81, 123, 237, .8);
+    color: #544a7d;
     margin: 1rem .3rem;
 
     :hover {
-        background-color: rgb(81, 123, 237);
+        background-color: #544a7d;
         transform: scale(1.1);
         color: white;
     }
