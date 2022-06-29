@@ -1,4 +1,4 @@
-import { collection, endBefore, getDocs, limit, orderBy, query, startAfter, where } from 'firebase/firestore'
+import { collection, endAt, endBefore, getDocs, limit, limitToLast, orderBy, query, startAfter, startAt, where } from 'firebase/firestore'
 import React from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
@@ -15,6 +15,7 @@ function HistoryPage() {
     const [lastVisible, setLastVisible] = useState([])
     const [pageError, setPageError] = useState('')
     const [pageCounter, setPageCounter] = useState(1)
+    const [prevLastVisible, setPrevLastVisible] = useState([])
 
     const transactionCollection = collection(db, 'transactions')
 
@@ -24,6 +25,7 @@ function HistoryPage() {
             const nextDocs = await getDocs(nextQuery)
             setLastVisible(nextDocs.docs[nextDocs.docs.length - 1])
             setUserTransactions(nextDocs.docs.map(item => ({ ...item.data(), id: item.id })))
+            setPrevLastVisible(nextDocs.docs[0])
             setPageCounter(prev => prev + 1)
         } catch (error) {
             setPageError('no more')
@@ -32,8 +34,9 @@ function HistoryPage() {
 
     const prevPageAction = async () => {
         try {
-            const prevQuery = query(transactionCollection, where('user', '==', auth.currentUser.uid), orderBy('createdAt', 'desc'), endBefore(userTransactions.length - 1), limit(5))
+            const prevQuery = query(transactionCollection, where('user', '==', auth.currentUser.uid), orderBy('createdAt', 'desc'), limitToLast(5), endBefore(prevLastVisible))
             const prevDocs = await getDocs(prevQuery)
+            setPrevLastVisible(prevDocs.docs[0])
             setLastVisible(prevDocs.docs[prevDocs.docs.length - 1])
             setUserTransactions(prevDocs.docs.map(item => ({ ...item.data(), id: item.id })))
             setPageCounter(prev => prev - 1)
