@@ -18,17 +18,27 @@ function Signup() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
-    // const [fNameError, setfNameError] = useState('')
-    // const [lNameError, setlNameError] = useState('')
-    // const [emailError, setEmailError] = useState('')
-    // const [passwordError, setPasswordError] = useState('')
+    const [fNameError, setfNameError] = useState('')
+    const [lNameError, setlNameError] = useState('')
+    const [emailError, setEmailError] = useState('')
+    const [passwordError, setPasswordError] = useState('')
 
     const signUpAction = async () => {
-        const newUser = await createUserWithEmailAndPassword(auth, email, password)
-        await createUser(newUser.user.uid)
-        await updateProfile(newUser.user, { displayName: fName + ' ' + lName })
-        navigate('/')
-        toast.success('You may now log in')
+        try {
+            fName === '' ? setfNameError('Please Fill in your First name') : setfNameError('')
+            lName === '' ? setlNameError('Please Fill in your Last name') : setlNameError('')
+            email === '' ? setEmailError('Please Fill in a valid Email') : setEmailError('')
+            password === '' ? setPasswordError('Please use a password atleast 6 characters ling') : setPasswordError('')
+            if (fName, lName, email, password) {
+                const newUser = await createUserWithEmailAndPassword(auth, email, password)
+                await createUser(newUser.user.uid)
+                await updateProfile(newUser.user, { displayName: fName + ' ' + lName })
+                navigate('/')
+                toast.success('You may now log in')
+            }
+        } catch (error) {
+            error ? setEmailError('Please Fill in a valid Email') : setEmailError('')
+        }
     }
 
     const createUser = async (id) => {
@@ -44,12 +54,16 @@ function Signup() {
                 <InputDiv>
                     <InputLabel>First Name</InputLabel>
                     <Input type='text' placeholder='Your Given Name...' onChange={e => setFName(e.target.value)} required></Input>
+                    {fNameError}
                     <InputLabel>Last Name</InputLabel>
                     <Input type='text' placeholder='Your Given Last Name...' onChange={e => setLName(e.target.value)} required></Input>
+                    {lNameError}
                     <InputLabel>Email</InputLabel>
                     <Input type='email' placeholder='Your Email here...' onChange={e => setEmail(e.target.value)} required></Input>
+                    {emailError}
                     <InputLabel>Password</InputLabel>
                     <Input type='password' placeholder='Your password here...' onChange={e => setPassword(e.target.value)} required></Input>
+                    {passwordError}
                     <StyledButton onClick={() => signUpAction()}>Sign up</StyledButton>
                 </InputDiv>
             </RightCol>
