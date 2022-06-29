@@ -29,7 +29,7 @@ function Home() {
             setUserTransactions(response.docs.map(item => ({ ...item.data(), id: item.id })))
         }
         getUserTransactions()
-    }, [balance])
+    }, [balance, currentUserDetails])
 
 
     useEffect(() => {
@@ -62,7 +62,7 @@ function Home() {
             <LeftColumn>
                 <UserBalanceCardContainer>
                     <TextH2>Your Balance</TextH2>
-                    <TextH1>${parseFloat(currentUserDetails.balance).toFixed(2)}</TextH1>
+                    <TextH1>${currentUserDetails.balance ? parseFloat(currentUserDetails.balance.toFixed(2)).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : '--'}</TextH1>
                 </UserBalanceCardContainer>
                 <BalanceCard currentUserDetails={currentUserDetails} />
                 <History userTransactions={userTransactions} />
