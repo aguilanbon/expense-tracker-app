@@ -30,10 +30,13 @@ export const TransactionAmount = styled.p`
     color: ${({color}) => color};
     font-size: 2vw;
     @media (max-width: 1024px) {
-        font-size: 2.5vw;
+        font-size: 3vw;
     }
     @media (max-width: 650px) {
         font-size: 5vw;
+    }
+    @media (max-width: 480px) {
+        font-size: 6.5vw;
     }
 
 `

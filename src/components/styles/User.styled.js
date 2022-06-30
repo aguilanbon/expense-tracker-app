@@ -14,8 +14,7 @@ export const UserInfoContainer = styled.div`
 
 export const UserTextName = styled.h3`
     font-size: 1rem;
-    opacity: .9;
-    font-weight: 200;
+    font-weight: 600;
     @media (max-width: 480px) {
         font-size: .8rem;
     }

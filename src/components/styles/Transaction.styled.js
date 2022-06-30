@@ -24,6 +24,7 @@ export const TransactionH1 = styled.h1`
 export const TransactionInput = styled.input`
     width: 100%;
     padding: 0.5rem;
+    height: 3rem;
 `
 
 export const ButtonContainer = styled.div`
@@ -35,6 +36,7 @@ export const TransactionButton = styled.button`
     padding: 0.5rem;
     width: 100%;
     margin: 1rem 0;
+    height: 2.5rem;
     cursor: pointer;
     color: ${({color}) => color};
     background-color: ${({bg}) => bg};
@@ -49,6 +51,10 @@ export const TransactionButton = styled.button`
 
     :active {
         transform: scale(1);
+    }
+
+    @media (max-width: 480px) {
+        height: 3rem;
     }
 `
 
