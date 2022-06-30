@@ -25,9 +25,9 @@ export const TransactionTypeText = styled.h3`
 `
 export const TransactionAmount = styled.p`
     color: ${({color}) => color};
-    font-size: 2rem;
-    @media (max-width: 480px) {
-        font-size: 1.7rem;
+    font-size: 2vw;
+    @media (max-width: 650px) {
+        font-size: 5vw;
     }
 
 `
