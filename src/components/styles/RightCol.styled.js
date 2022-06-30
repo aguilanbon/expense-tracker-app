@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled  from "styled-components";
 
 export const RightCol = styled.div`
@@ -24,7 +25,6 @@ export const RightCol = styled.div`
 
 export const SignInText = styled.h2`
     font-size: 2rem;
-    margin-bottom: 2rem;
     text-align: center;
 
     @media (max-width: 650px) {
@@ -105,4 +105,15 @@ export const StyledButton = styled.button`
     @media (max-width: 650px) {
         width: 90%;
     }
+`
+
+export const backBtnContainer = styled.div`
+    display: flex;
+    width: 100%;
+    align-items: flex-start;
+    justify-content: flex-start;
+`
+
+export const backBtnLink = styled(Link)`
+    
 `

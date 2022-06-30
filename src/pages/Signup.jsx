@@ -29,7 +29,7 @@ function Signup() {
             lName === '' ? setlNameError('Please Fill in your Last name') : setlNameError('')
             email === '' ? setEmailError('Please Fill in a valid Email') : setEmailError('')
             password === '' ? setPasswordError('Please use a password atleast 6 characters ling') : setPasswordError('')
-            if (fName, lName, email, password) {
+            if (fName && lName && email && password) {
                 const newUser = await createUserWithEmailAndPassword(auth, email, password)
                 await createUser(newUser.user.uid)
                 await updateProfile(newUser.user, { displayName: fName + ' ' + lName })
