@@ -11,6 +11,9 @@ export const HomeContainer = styled.div`
         width: 80%;
     }
     @media (max-width: 1024px) {
+        width: 95%;
+    }
+    @media (max-width: 768px) {
         width: 100%;
     }
     @media (max-width: 650px) {
@@ -54,6 +57,7 @@ export const UserBalanceCardContainer = styled.div`
     color: #544a7d;
     border: 2px solid #544a7d;
     border-radius: 0.5rem;
+    width: 100%;
 `
 
 export const TextH3 = styled.h3`
@@ -63,13 +67,16 @@ export const TextH2 = styled.h2`
     font-size: 2vw;
 
     @media (max-width: 650px) {
-        font-size: 7vw;
+        font-size: 5vw;
     }
 `
 export const TextH1 = styled.h1`
-    font-size: 3vw;
+    font-size: 3.2vw;
 
+    @media (max-width: 1024px) {
+        font-size: 4vw;
+    }
     @media (max-width: 650px) {
-        font-size: 8vw;
+        font-size: 7vw;
     }
 `

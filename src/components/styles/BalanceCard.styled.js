@@ -17,15 +17,21 @@ export const TransactionContainer = styled.div`
 
 export const TransactionTypeText = styled.h3`
     width: 100%;
-    font-size: 1.2rem;
+    font-size: 1.8vw;
     padding: 1rem;
-    @media (max-width: 480px) {
-        font-size: .9rem;
+    @media (max-width: 1024px) {
+        font-size: 2vw;
+    }
+    @media (max-width: 650px) {
+        font-size: 3.5vw;
     }
 `
 export const TransactionAmount = styled.p`
     color: ${({color}) => color};
     font-size: 2vw;
+    @media (max-width: 1024px) {
+        font-size: 2.5vw;
+    }
     @media (max-width: 650px) {
         font-size: 5vw;
     }
