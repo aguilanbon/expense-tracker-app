@@ -40,10 +40,11 @@ export const TransactionButton = styled.button`
     background-color: ${({bg}) => bg};
     border: 1px solid ${({color}) => color};
     border-radius: 0.2rem;
+    transition: all 150ms ease-in;
 
     :hover {
         background-color: ${({hv}) => hv};
-        transform: scale(1.1);
+        transform: translateY(-.1rem);
     }
 
     :active {
