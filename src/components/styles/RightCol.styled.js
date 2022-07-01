@@ -32,7 +32,7 @@ export const SignInText = styled.h2`
     }
 
     @media (max-width: 480px) {
-        font-size: 1.2rem;
+        font-size: 1.4rem;
         margin-bottom: 1rem;
     }
 `
@@ -52,6 +52,9 @@ export const InputLabel = styled.label`
     margin-top: .8rem;
     @media (max-width: 650px) {
         width: 90%;
+    }
+    @media (max-width: 480px) {
+        font-size: 1rem;
     }
 `
 
@@ -73,8 +76,11 @@ export const Input = styled.input`
         border-bottom: 2px solid #413b5f;
         outline-color: transparent;
     }
-        @media (max-width: 650px) {
+    @media (max-width: 650px) {
         width: 90%;
+    }
+    @media (max-width: 480px) {
+        font-size: 1rem;
     }
 `
 
