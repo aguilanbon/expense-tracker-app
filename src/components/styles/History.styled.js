@@ -51,13 +51,24 @@ export const HistoryTextContainer = styled.div`
 
 export const TextTransaction = styled.p`
     font-size: .8rem;
+    margin-right: .5rem;
+    @media (max-width: 480px) {
+        font-size: 1rem;
+    }
 `
 
 export const TextDate = styled.p`
     font-size: .6rem;
     opacity: .8;
+
+    @media (max-width: 480px) {
+        font-size: .7rem;
+    }
 `
 
 export const TextAmount = styled.p`
     font-size: .8rem;
+    @media (max-width: 480px) {
+        font-size: 1rem;
+    }
 `
